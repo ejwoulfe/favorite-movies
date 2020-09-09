@@ -1,5 +1,4 @@
 const mongoose = require('mongoose');
-const Movie = require('./movie.model');
 
 const Schema = mongoose.Schema;
 
@@ -24,11 +23,12 @@ const userSchema = new Schema({
         type: String,
         required: true
     },
-    favorites: [Movie]
+    favorites: [{
+        type: mongoose.Schema.ObjectId,
+        ref: 'Movie'
+    }]
 }, {
     timestamps: true,
 });
 
-const User = mongoose.model('User', userSchema);
-
-module.exports = User;
+module.exports = mongoose.model('user', userSchema);

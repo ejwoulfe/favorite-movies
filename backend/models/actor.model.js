@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 const Schema = mongoose.Schema;
 
-const movieSchema = new Schema({
+const actorSchema = new Schema({
     id: {
         type: Number,
         required: true,
@@ -10,18 +10,19 @@ const movieSchema = new Schema({
             unique: true
         }
     },
-    title: {
+    name: {
         type: String,
         required: true
     },
-    year: {
+    birth_year: {
         type: Number,
         required: true
+
     },
-    actors: [{
+    movies: [{
         type: mongoose.Schema.ObjectId,
-        ref: 'Actor'
+        ref: 'Movie'
     }]
 });
 
-module.exports = mongoose.model('Movie', movieSchema);
+module.exports = mongoose.model('Actor', actorSchema);
