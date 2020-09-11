@@ -9,7 +9,6 @@ const userSchema = new Schema({
         required: [true, "can't be blank"],
         match: [/^[a-zA-Z0-9]+$/, 'is invalid'],
         unique: true,
-        trim: true,
         minlength: 2
     },
     email: {

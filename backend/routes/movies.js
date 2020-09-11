@@ -9,9 +9,9 @@ router.route('/').get((request, response) => {
 });
 
 router.route('/add').post((request, response) => {
-    const id = request.body.name;
-    const title = request.body.email;
-    const year = request.body.password;
+    const id = request.body.id;
+    const title = request.body.title;
+    const year = Date.parse(request.body.year);
     const actors = [];
     const newMovie = new Movie({
         id,
