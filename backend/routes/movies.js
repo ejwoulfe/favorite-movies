@@ -6,6 +6,7 @@ let Movie = require('../models/movie.model');
 
 router.route('/').get((request, response) => {
     Movie.find()
+        .populate('actors')
         .then(movies => response.json(movies))
         .catch(err => response.status(400).json('Error: ' + err));
 });

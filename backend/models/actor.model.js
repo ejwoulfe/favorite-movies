@@ -12,10 +12,10 @@ const actorSchema = new Schema({
         required: true
 
     },
-    movies: [{
-        type: Schema.Types.ObjectId,
-        ref: 'Movie'
-    }]
+    image: {
+        type: String,
+        default: "https://m.media-amazon.com/images/G/01/imdb/images/nopicture/medium/name-2135195744._CB466677935_.png"
+    }
 });
 
 module.exports = mongoose.model('Actor', actorSchema);
