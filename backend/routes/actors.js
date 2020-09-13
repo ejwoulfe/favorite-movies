@@ -2,11 +2,22 @@ const router = require('express').Router();
 let Actor = require('../models/actor.model');
 
 
+// GET Routes  \\
+
 router.route('/').get((request, response) => {
     Actor.find()
         .then(actors => response.json(actors))
         .catch(err => response.status(400).json('Error: ' + err));
 });
+
+router.route('/:id').get((request, response) => {
+    Actor.findById(request.params.id)
+        .then(actors => response.json(actors))
+        .catch(err => response.status(400).json('Error: ' + err));
+})
+
+
+// POST Routes  \\
 
 router.route('/add').post((request, response) => {
     const id = request.body.id;
@@ -26,6 +37,24 @@ router.route('/add').post((request, response) => {
 
 
 })
+
+// UPDATE Routes  \\
+
+router.route('/update/:id').post((request, response) => {
+    Actor.findById(request.params.id)
+        .then(actor => {
+            actor.title = request.body.title;
+            actor.year = Date.parse(request.body.year);
+            actor.actors = request.body.actors;
+
+            actor.save()
+                .then(() => response.json('Actor updated.'))
+                .catch(err => response.status(400).json('Error: ' + err));
+        })
+        .catch(err => response.status(400).json('Error: ' + err));
+})
+
+// DELETE Routes  \\
 
 
 module.exports = router;

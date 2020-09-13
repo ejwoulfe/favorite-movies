@@ -13,7 +13,7 @@ const actorSchema = new Schema({
 
     },
     movies: [{
-        type: mongoose.Schema.ObjectId,
+        type: Schema.Types.ObjectId,
         ref: 'Movie'
     }]
 });

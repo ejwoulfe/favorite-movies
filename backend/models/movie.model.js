@@ -5,6 +5,7 @@ const Schema = mongoose.Schema;
 const movieSchema = new Schema({
     title: {
         type: String,
+        unique: true,
         required: true
     },
     year: {
@@ -12,7 +13,7 @@ const movieSchema = new Schema({
         required: true
     },
     actors: [{
-        type: mongoose.Schema.ObjectId,
+        type: Schema.Types.ObjectId,
         ref: 'Actor'
     }]
 });
