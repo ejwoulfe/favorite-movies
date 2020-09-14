@@ -6,14 +6,12 @@ let Actor = require('../models/actor.model');
 
 router.route('/').get((request, response) => {
     Actor.find()
-        .populate('movies')
         .then(actors => response.json(actors))
         .catch(err => response.status(400).json('Error: ' + err));
 });
 
 router.route('/:id').get((request, response) => {
     Actor.findById(request.params.id)
-        .populate('movies')
         .then(actors => response.json(actors))
         .catch(err => response.status(400).json('Error: ' + err));
 })
