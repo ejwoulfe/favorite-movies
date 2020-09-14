@@ -6,6 +6,7 @@ let User = require('../models/user.model');
 
 router.route('/').get((request, response) => {
     User.find()
+        .populate('movies')
         .then(users => response.json(users))
         .catch(err => response.status(400).json('Error: ' + err));
 });
@@ -13,6 +14,7 @@ router.route('/').get((request, response) => {
 
 router.route('/:id').get((request, response) => {
     User.findById(request.params.id)
+        .populate('movies')
         .then(users => response.json(users))
         .catch(err => response.status(400).json('Error: ' + err));
 })

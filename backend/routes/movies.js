@@ -14,6 +14,7 @@ router.route('/').get((request, response) => {
 
 router.route('/:id').get((request, response) => {
     Movie.findById(request.params.id)
+        .populate('actors')
         .then(movies => response.json(movies))
         .catch(err => response.status(400).json('Error: ' + err));
 })
