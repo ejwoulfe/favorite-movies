@@ -6,7 +6,6 @@ const Schema = mongoose.Schema;
 const movieSchema = new Schema({
     title: {
         type: String,
-        unique: true,
         required: true
     },
     year: {
@@ -14,17 +13,20 @@ const movieSchema = new Schema({
         required: true
     },
     director: {
-        type: String
+        type: String,
+        required: true
     },
     rating: {
-        type: Number
+        type: Number,
+        required: true
     },
     description: {
-        type: String
+        type: String,
+        required: true
     },
     poster: {
         type: String,
-        default: "https://images.unsplash.com/photo-1440404653325-ab127d49abc1?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80"
+        default: "https://images.unsplash.com/photo-1440404653325-ab127d49abc1?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80",
 
     },
     actors: [{

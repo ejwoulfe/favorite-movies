@@ -20,15 +20,13 @@ router.route('/:id').get((request, response) => {
 // POST Routes  \\
 
 router.route('/add').post((request, response) => {
-    const id = request.body.id;
     const name = request.body.name;
     const birth_year = Date.parse(request.body.birth_year);
-    const movies = [];
+    const image = request.body.image;
     const newActor = new Actor({
-        id,
         name,
         birth_year,
-        movies
+        image
     });
 
     newActor.save()
@@ -43,9 +41,9 @@ router.route('/add').post((request, response) => {
 router.route('/update/:id').post((request, response) => {
     Actor.findById(request.params.id)
         .then(actor => {
-            actor.title = request.body.title;
-            actor.year = Date.parse(request.body.year);
-            actor.actors = request.body.actors;
+            actor.name = request.body.name;
+            actor.birth_year = Date.parse(request.body.birth_year);
+            actor.image = request.body.image;
 
             actor.save()
                 .then(() => response.json('Actor updated.'))

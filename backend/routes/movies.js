@@ -25,10 +25,18 @@ router.route('/:id').get((request, response) => {
 router.route('/add').post((request, response) => {
     const title = request.body.title;
     const year = Date.parse(request.body.year);
+    const director = request.body.director;
+    const rating = request.body.rating;
+    const description = request.body.description;
+    const poster = request.body.poster;
     const actors = [];
     const newMovie = new Movie({
         title,
         year,
+        director,
+        rating,
+        description,
+        poster,
         actors
     });
 
@@ -46,6 +54,10 @@ router.route('/update/:id').post((request, response) => {
         .then(movie => {
             movie.title = request.body.title;
             movie.year = Date.parse(request.body.year);
+            movie.director = request.body.director;
+            movie.rating = request.body.rating;
+            movie.description = request.body.description;
+            movie.poster = request.body.poster;
             movie.actors = request.body.actors;
 
             movie.save()
