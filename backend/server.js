@@ -26,14 +26,16 @@ connection.once('open', () => {
 })
 
 // Setup routes for our models.
-const movieRouter = require('./routes/movies');
-const userRouter = require('./routes/users');
-const actorRouter = require('./routes/actors');
+const movieRouter = require('./routes/api/movies');
+const userRouter = require('./routes/api/users');
+const actorRouter = require('./routes/api/actors');
 
 // When someone goes to /movies they will be take to our movies router.
 app.use('/movies', movieRouter);
 app.use('/users', userRouter);
 app.use('/actors', actorRouter);
+
+
 
 
 

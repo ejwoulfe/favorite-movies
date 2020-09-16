@@ -1,10 +1,10 @@
 const router = require('express').Router();
-let Movie = require('../models/movie.model');
+let Movie = require('../../models/movie.model');
 
 
 // GET Routes  \\
 
-router.route('/').get((request, response) => {
+router.route('/api/').get((request, response) => {
     Movie.find()
         .populate('actors')
         .then(movies => response.json(movies))
@@ -12,7 +12,7 @@ router.route('/').get((request, response) => {
 });
 
 
-router.route('/:id').get((request, response) => {
+router.route('/api/:id').get((request, response) => {
     Movie.findById(request.params.id)
         .populate('actors')
         .then(movies => response.json(movies))
@@ -22,7 +22,7 @@ router.route('/:id').get((request, response) => {
 
 // CREATE Routes  \\
 
-router.route('/add').post((request, response) => {
+router.route('/api/new').post((request, response) => {
     const title = request.body.title;
     const year = Date.parse(request.body.year);
     const director = request.body.director;
@@ -49,7 +49,7 @@ router.route('/add').post((request, response) => {
 
 // UPDATE Route  \\
 
-router.route('/update/:id').post((request, response) => {
+router.route('/api/update/:id').post((request, response) => {
     Movie.findById(request.params.id)
         .then(movie => {
             movie.title = request.body.title;
@@ -70,7 +70,7 @@ router.route('/update/:id').post((request, response) => {
 
 // DELETE Routes  \\
 
-router.route('/:id').delete((request, response) => {
+router.route('/api/:id').delete((request, response) => {
     Movie.findByIdAndDelete(request.params.id)
         .then(() => response.json('Movie Deleted.'))
         .catch(err => response.status(400).json('Error: ' + err));

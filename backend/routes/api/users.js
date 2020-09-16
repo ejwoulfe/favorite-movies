@@ -1,10 +1,10 @@
 const router = require('express').Router();
-let User = require('../models/user.model');
+let User = require('../../models/user.model');
 
 
 //  GET Routes  \\
 
-router.route('/').get((request, response) => {
+router.route('/api/account/').get((request, response) => {
     User.find()
         .populate('movies')
         .then(users => response.json(users))
@@ -12,7 +12,7 @@ router.route('/').get((request, response) => {
 });
 
 
-router.route('/:id').get((request, response) => {
+router.route('/api/account/:id').get((request, response) => {
     User.findById(request.params.id)
         .populate('movies')
         .then(users => response.json(users))
@@ -22,17 +22,21 @@ router.route('/:id').get((request, response) => {
 
 // POST Routes  \\
 
-router.route('/add').post((request, response) => {
-    const name = request.body.name;
+router.route('/api/account/signup').post((request, response, next) => {
+    const firstName = request.body.firstName;
+    const lastName = request.body.lastName;
     const email = request.body.email;
     const password = request.body.password;
     const favorites = [];
     const newUser = new User({
-        name,
+        firstName,
+        lastName,
         email,
         password,
         favorites
     });
+
+
 
     newUser.save()
         .then(() => response.json('User added.'))
@@ -43,10 +47,11 @@ router.route('/add').post((request, response) => {
 
 // UPDATE Routes  \\
 
-router.route('/update/:id').post((request, response) => {
+router.route('/api/account/update/:id').post((request, response) => {
     User.findById(request.params.id)
         .then(user => {
-            user.name = request.body.name;
+            user.firstName = request.body.firstName;
+            user.lasstName = request.body.lastName;
             user.email = request.body.email;
             user.password = request.body.password;
             user.favorites = request.body.favorites;
@@ -60,7 +65,7 @@ router.route('/update/:id').post((request, response) => {
 
 // DELETE Routes  \\
 
-router.route('/:id').delete((request, response) => {
+router.route('/api/account/:id').delete((request, response) => {
     User.findByIdAndDelete(request.params.id)
         .then(() => response.json('User Deleted.'))
         .catch(err => response.status(400).json('Error: ' + err));
