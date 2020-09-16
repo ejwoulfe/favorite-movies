@@ -1,10 +1,14 @@
 const router = require('express').Router();
+const {
+    request,
+    response
+} = require('express');
 let User = require('../../models/user.model');
 
 
 //  GET Routes  \\
 
-router.route('/api/account/').get((request, response) => {
+router.route('/api/account').get((request, response) => {
     User.find()
         .populate('movies')
         .then(users => response.json(users))
@@ -19,6 +23,10 @@ router.route('/api/account/:id').get((request, response) => {
         .catch(err => response.status(400).json('Error: ' + err));
 })
 
+router.route('api/account/signin').get((request, response, next) => {
+
+})
+
 
 // POST Routes  \\
 
@@ -28,19 +36,41 @@ router.route('/api/account/signup').post((request, response, next) => {
     const email = request.body.email;
     const password = request.body.password;
     const favorites = [];
-    const newUser = new User({
-        firstName,
-        lastName,
-        email,
-        password,
-        favorites
+
+
+
+    User.find({
+        email: email
+
+    }, (err, previousUsers) => {
+        if (err) {
+            return response.send({
+                success: false,
+                message: 'Error: Server error'
+            });
+        } else if (previousUsers.length > 0) {
+            return response.send({
+                success: false,
+                message: 'Error: Account already exists.'
+            });
+        }
+
+        const newUser = new User();
+        newUser.firstName = firstName;
+        newUser.lastName = lastName;
+        newUser.email = email;
+        newUser.password = newUser.generateHash(password);
+        newUser.favorites = favorites;
+
+
+
+
+        newUser.save()
+            .then(() => response.json('User added.'))
+            .catch(err => response.status(400).json('Error: ' + err));
+
     });
 
-
-
-    newUser.save()
-        .then(() => response.json('User added.'))
-        .catch(err => response.status(400).json('Error: ' + err));
 
 
 })

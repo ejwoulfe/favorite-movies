@@ -9,26 +9,31 @@ const userSchema = new Schema({
         lowercase: true,
         match: [/^[a-zA-Z0-9]+$/, 'is invalid'],
         trim: true,
-        minlength: 2
+        minlength: 2,
+        required: [true, "First name cannot be blank."]
     },
     lastName: {
         type: String,
         lowercase: true,
         match: [/^[a-zA-Z0-9]+$/, 'is invalid'],
         trim: true,
-        minlength: 2
+        minlength: 2,
+        required: [true, "Last name cannot be blank."]
+
     },
     email: {
         type: String,
         lowercase: true,
-        required: [true, "can't be blank"],
+        required: [true, "email cannot be blank."],
         match: [/\S+@\S+\.\S+/, 'is invalid'],
         unique: true,
         index: true
     },
     password: {
         type: String,
-        required: true
+        minlength: [6, "Must be 6 characters or more."],
+        required: [true, "Must enter a password."]
+
     },
     isDeleted: {
         type: Boolean,
