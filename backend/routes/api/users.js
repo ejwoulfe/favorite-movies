@@ -19,6 +19,41 @@ router.route('/api/account/:id').get((request, response) => {
         .catch(err => response.status(400).json('Error: ' + err));
 })
 
+// Verify Token
+router.route('/api/account/verify').get((request, response) => {
+    const {
+        query
+    } = request;
+    const {
+        token
+    } = query;
+
+
+    UserSession.find({
+        _id: token,
+        isDeleted: false
+    }, (err, sessions) => {
+        if (err) {
+            return response.status(500).send({
+                success: false,
+                message: "Server Error."
+            });
+        }
+        if (sessions.length !== 1) {
+            return response.status(400).send({
+                success: false,
+                message: "Couldn't find session."
+            });
+        } else {
+            return response.status(200).send({
+                success: true,
+                message: "Good"
+            });
+        }
+    })
+
+});
+
 
 
 // POST Routes  \\
@@ -102,19 +137,20 @@ router.route('/api/account/signin').post((request, response, next) => {
         }
 
         let userSession = new UserSession();
-        userSession.userid = user.id;
+        userSession.userId = user._id;
         userSession.save((err, doc) => {
             if (err) {
                 return response.status(500).send({
                     success: false,
                     message: "Server Error."
                 })
+            } else {
+                return response.status(200).send({
+                    success: true,
+                    message: "Valid sign in",
+                    token: doc._id
+                })
             }
-            return response.status(200).send({
-                success: true,
-                message: "Valid sign in",
-                token: doc._id
-            })
 
         })
 
@@ -126,6 +162,8 @@ router.route('/api/account/signin').post((request, response, next) => {
 
 
 })
+
+
 
 // UPDATE Routes  \\
 
