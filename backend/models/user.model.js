@@ -1,5 +1,4 @@
 const mongoose = require('mongoose');
-const bcrypt = require('bcrypt');
 
 const Schema = mongoose.Schema;
 
@@ -35,10 +34,6 @@ const userSchema = new Schema({
         required: [true, "Must enter a password."]
 
     },
-    isDeleted: {
-        type: Boolean,
-        default: false
-    },
     favorites: [{
         type: Schema.Types.ObjectId,
         ref: 'Movie'
@@ -47,11 +42,5 @@ const userSchema = new Schema({
     timestamps: true,
 });
 
-userSchema.methods.generateHash = function (password) {
-    return bcrypt.hashSync(password, bcrypt.genSaltSync(8), null);
-};
 
-userSchema.methods.validPassword = function (password) {
-    return bcrypt.compareSync(password, this.password);
-};
 module.exports = mongoose.model('User', userSchema);
