@@ -29,11 +29,13 @@ connection.once('open', () => {
 const movieRouter = require('./routes/api/movies');
 const userRouter = require('./routes/api/users');
 const actorRouter = require('./routes/api/actors');
+const authRouter = require('./routes/api/auth');
 
 // When someone goes to /movies they will be take to our movies router.
 app.use('/movies', movieRouter);
 app.use('/users', userRouter);
 app.use('/actors', actorRouter);
+app.use('/auth', authRouter);
 
 
 
