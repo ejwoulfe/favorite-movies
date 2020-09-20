@@ -111,7 +111,6 @@ router.route('/api/account/login').post(async (request, response) => {
 
         // On successful login, responed with 200 status and json object.
         response.status(200).json({
-            jwt: "secret: " + JWT_SECRET,
             user: {
                 id: user._id,
                 name: user.name,
