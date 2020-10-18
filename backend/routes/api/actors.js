@@ -6,12 +6,14 @@ let Actor = require('../../models/actor.model');
 
 router.route('/api/').get((request, response) => {
     Actor.find()
+        .populate('movies')
         .then(actors => response.json(actors))
         .catch(err => response.status(400).json('Error: ' + err));
 });
 
 router.route('/api/:id').get((request, response) => {
     Actor.findById(request.params.id)
+        .populate('movies')
         .then(actors => response.json(actors))
         .catch(err => response.status(400).json('Error: ' + err));
 })
@@ -23,10 +25,14 @@ router.route('/api/new').post((request, response) => {
     const name = request.body.name;
     const birth_year = Date.parse(request.body.birth_year);
     const image = request.body.image;
+    const description = request.body.description;
+    const movies = [];
     const newActor = new Actor({
         name,
         birth_year,
-        image
+        image,
+        description,
+        movies
     });
 
     newActor.save()
@@ -44,6 +50,8 @@ router.route('/api/update/:id').post((request, response) => {
             actor.name = request.body.name;
             actor.birth_year = Date.parse(request.body.birth_year);
             actor.image = request.body.image;
+            actor.description = request.body.description;
+            actor.movies = request.body.movies;
 
             actor.save()
                 .then(() => response.json('Actor updated.'))
