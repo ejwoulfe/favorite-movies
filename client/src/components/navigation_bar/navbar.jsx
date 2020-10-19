@@ -3,8 +3,8 @@ import React from 'react';
 function Navbar() {
 
     return (
-        <nav class="navigation-bar">
-            <img class="logo" src="logo.png"></img>
+        <nav className="navigation-bar">
+            <img className="logo" src="logo.png"></img>
             <a href="#">Home</a>
             <a href="#">Projects</a>
             <a href="#">About</a>
