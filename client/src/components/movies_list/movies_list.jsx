@@ -8,6 +8,24 @@ function MoviesList() {
     const [moviesList, setMoviesList] = useState([]);
     const [buttonClicked, setButtonClicked] = useState(false);
 
+    function formatDate(date) {
+        let year = date.getFullYear();
+        let month = date.getMonth() + 1;
+        let dt = date.getDate();
+        console.log(dt)
+
+        if (dt < 10) {
+            dt = '0' + dt;
+        }
+        if (month < 10) {
+            month = '0' + month;
+        }
+
+        return (month + '/' + dt + '/' + year);
+
+
+    }
+
     useEffect(() => {
 
         axios({
@@ -26,8 +44,13 @@ function MoviesList() {
             {moviesList.map((movie, i) => (
                 <div key={i} className="movie_container">
                     <img className="movie_poster" src={movie.poster} alt={movie.title + " poster"}></img>
-                    {movie.title}
-                    <p>{Date(movie.year)}</p>
+                    <div className="movie_information">
+                        <h2 id="movie_title">{movie.title}</h2>
+                        <div id="line_container">
+                            <h4 id="movie_year">{"Released: " + formatDate(new Date(movie.year))}</h4>
+                            <h5 id="movie_rating">{"Rated: " + movie.rating}</h5>
+                        </div>
+                    </div>
                 </div>
 
             ))}

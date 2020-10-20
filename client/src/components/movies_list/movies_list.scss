@@ -1,5 +1,62 @@
-.movie_poster {
-    height: 30rem;
-    width: 20rem;
-    object-fit: cover;
+.movie_container {
+    display: flex;
+    margin: 3rem 0 3rem 0;
+    align-items: flex-end;
+    flex-flow: wrap;
+
+    .movie_poster {
+        max-height: 30rem;
+        max-width: 20rem;
+        min-height: 0;
+        min-width: 0;
+        object-fit: contain;
+        flex: 50%;
+        margin-right: 5rem;
+
+
+    }
+
+    .movie_information {
+        flex: 50%;
+        max-width: 35rem;
+
+
+
+        #line_container {
+            display: flex;
+
+            #movie_year {
+                flex: 50%;
+                text-align: left;
+
+            }
+
+            #movie_rating {
+                flex: 50%;
+                text-align: right;
+
+            }
+        }
+
+
+        // #movie_year {
+        //     display: inline;
+
+        // }
+
+        // #movie_rating {
+        //     display: inline;
+        //     float: right;
+        // }
+    }
+
+
+}
+
+
+///////// MEDIA QUERIES /////////
+@media only screen and (max-width: 799px) {
+    .movie_container {
+        justify-content: center;
+    }
 }
