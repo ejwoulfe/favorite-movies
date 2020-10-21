@@ -3,6 +3,7 @@ import axios from "axios";
 import { useState } from 'react';
 import { useEffect } from 'react';
 import './movies_list.scss';
+import star from '../../Assets/star.png'
 
 function MoviesList() {
     const [moviesList, setMoviesList] = useState([]);
@@ -52,8 +53,7 @@ function MoviesList() {
                         <div className="movie_information">
                             <h2 className="movie_title">{movie.title}</h2>
                             <div className="details_container">
-                                <h4 className="movie_year">{"Released: " + formatDate(new Date(movie.year))}</h4>
-                                <h5 className="movie_rating">{"Rated: " + movie.rating}</h5>
+                                <h5 className="movie_rating"><img className="star_icon" src={star} alt="star_icon" />{movie.rating + "/10"}</h5>
                             </div>
 
                         </div>
