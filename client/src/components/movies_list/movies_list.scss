@@ -1,28 +1,37 @@
 .movie_container {
+    border-bottom: 2px white solid;
+    background-color: rgba(0, 0, 0, 0.9);
+    position: relative;
+    min-height: 30rem;
     display: flex;
-    margin: 3rem 0 3rem 0;
+    justify-content: flex-start;
     align-items: flex-end;
-    justify-content: space-evenly;
-    flex-flow: nowrap;
+    margin-bottom: 5rem;
 
-    .movie_poster {
-        max-height: 30rem;
-        object-fit: contain;
-        flex-grow: 1;
-        flex: 50%;
-    }
 
     .movie_information {
-        flex-grow: 1;
-        flex: 50%;
+        position: relative;
+    }
 
-
-
-
+    .movie_image {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: auto;
+        opacity: 0.7;
+        object-fit: cover;
+        object-position: 0% 10%;
+        max-height: 30rem;
     }
 
 
 }
+
+
+
+
+
 
 
 /////// MEDIA QUERIES /////////
@@ -31,5 +40,8 @@
         align-items: flex-start;
         flex-direction: column;
 
+
     }
+
+
 }

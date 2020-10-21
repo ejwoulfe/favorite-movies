@@ -41,19 +41,27 @@ function MoviesList() {
         <>
             <h1>Movies</h1>
 
-            {moviesList.map((movie, i) => (
-                <div key={i} className="movie_container">
-                    <img className="movie_poster" src={movie.poster} alt={movie.title + " poster"}></img>
-                    <div className="movie_information">
-                        <h2 id="movie_title">{movie.title}</h2>
-                        <div id="line_container">
-                            <h4 id="movie_year">{"Released: " + formatDate(new Date(movie.year))}</h4>
-                            <h5 id="movie_rating">{"Rated: " + movie.rating}</h5>
+            <div id="movies">
+
+                {moviesList.map((movie, i) => (
+                    <div key={i} className="movie_container">
+
+                        <img className="movie_image" src={movie.poster} alt={movie.title + " poster"}></img>
+
+
+                        <div className="movie_information">
+                            <h2 className="movie_title">{movie.title}</h2>
+                            <div className="details_container">
+                                <h4 className="movie_year">{"Released: " + formatDate(new Date(movie.year))}</h4>
+                                <h5 className="movie_rating">{"Rated: " + movie.rating}</h5>
+                            </div>
+
                         </div>
                     </div>
-                </div>
 
-            ))}
+
+                ))}
+            </div>
 
         </>
 
