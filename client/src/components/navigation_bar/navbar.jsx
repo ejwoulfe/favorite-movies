@@ -4,7 +4,7 @@ function Navbar() {
 
     return (
         <nav className="navigation-bar">
-            <img className="logo" src="#"></img>
+            <img className="logo" alt="logo" src="#"></img>
             <a href="#">Home</a>
             <a href="#">Projects</a>
             <a href="#">About</a>
