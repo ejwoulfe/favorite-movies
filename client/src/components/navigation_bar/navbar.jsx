@@ -1,17 +1,18 @@
 import React from 'react';
+import ListMenu from './list_menu/list_menu';
+import './navbar.scss';
+import SearchBar from './search_bar/search_bar';
 
-function Navbar() {
+function NavBar() {
 
     return (
         <nav className="navigation-bar">
             <img className="logo" alt="logo" src="#"></img>
-            <a href="#">Home</a>
-            <a href="#">Projects</a>
-            <a href="#">About</a>
-            <a href="#">Services</a>
-            <a href="#">Get in Touch</a>
+            <a href="#">Sign In</a>
+            <SearchBar />
+            <ListMenu />
         </nav>
     );
 }
 
-export default Navbar;
+export default NavBar;
