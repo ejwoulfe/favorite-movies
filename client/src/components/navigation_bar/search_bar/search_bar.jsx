@@ -4,7 +4,9 @@ import './search_bar.scss';
 function SearchBar() {
 
     return (
-        <input type="text" placeholder="Search..."></input>
+        <div id="search_bar_container">
+            <input id="search_bar" type="text" placeholder="Search..."></input>
+        </div>
     );
 }
 

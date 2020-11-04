@@ -1,6 +1,7 @@
 import React from 'react';
 import { useState } from 'react';
 import { useEffect } from 'react';
+import './home.scss';
 
 
 function HomePage() {
@@ -10,10 +11,10 @@ function HomePage() {
 
     return (
         <>
-            <h1>Home</h1>
 
 
             <div id="home_content">
+                <h1>Home</h1>
                 <div className="images_container">
                     <h1>Movies</h1>
                 </div>
