@@ -11,8 +11,14 @@ nav {
         flex-wrap: nowrap;
         align-items: center;
 
-        #logo {
+        #logo_container {
             flex: 10%;
+            text-align: end;
+
+            #logo {
+                max-width: 4rem;
+                padding-left: 0.6rem;
+            }
         }
 
         #search_bar_container {

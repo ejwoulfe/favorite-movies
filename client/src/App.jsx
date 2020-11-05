@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Route } from 'react-router-dom';
 import NavBar from './components/navigation_bar/navbar';
 import MoviesList from './components/movies_list/movies_list';
 import HomePage from './components/home_page/home';
+import Footer from './components/footer/footer';
 
 
 export const LoggedInContext = React.createContext();
@@ -22,6 +23,9 @@ function App() {
         {/* <MoviesList ></MoviesList> */}
         {/* <Route path="/" exact component={MoviesList} />
       <Route path="/user" exact component={CreateUser} /> */}
+
+
+        {/* <Footer /> */}
 
 
       </Router>

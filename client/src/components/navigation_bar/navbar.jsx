@@ -9,7 +9,9 @@ function NavBar() {
     return (
         <nav className="navigation-bar">
             <div id="navigation_content">
-                <img id="logo" className="filter-white" alt="logo" src={movie_logo}></img>
+                <div id="logo_container">
+                    <img id="logo" className="filter-white" alt="logo" src={movie_logo}></img>
+                </div>
                 <SearchBar />
                 <button id="sign_in_button" href="#">Sign In</button>
                 <ListMenu />

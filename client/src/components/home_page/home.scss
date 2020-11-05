@@ -1,7 +1,26 @@
 @import '../../util/variables';
 
 #home_content {
-    max-width: $max-width-large;
+
     min-width: $min-width;
     margin: 0 auto;
+
+    #home_title {
+        text-align: center;
+    }
+
+    .images_container {
+        background-color: slategray;
+        min-height: 35rem;
+
+
+
+    }
+
+    #movies_row {
+        background-image: url('../../Assets/MoviesRow.png');
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+    }
 }
