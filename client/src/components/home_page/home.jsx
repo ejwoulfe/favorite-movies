@@ -21,7 +21,7 @@ function HomePage() {
 
                     <h1>Movies</h1>
                 </div>
-                <div className="images_container">
+                <div id="actors_row" className="images_container">
                     <h1>Actors</h1>
                 </div>
 

@@ -10,7 +10,6 @@
     }
 
     .images_container {
-        background-color: slategray;
         min-height: 33rem;
 
 
@@ -21,6 +20,14 @@
 
     #movies_row {
         background-image: url('../../Assets/MoviesRow.png');
+        background-repeat: no-repeat;
+        background-position: left;
+
+
+    }
+
+    #actors_row {
+        background-image: url('../../Assets/ActorsRow.png');
         background-repeat: no-repeat;
         background-position: left;
 
