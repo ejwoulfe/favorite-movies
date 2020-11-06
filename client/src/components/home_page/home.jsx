@@ -15,7 +15,9 @@ function HomePage() {
 
             <div id="home_content">
                 <h1 id="home_title">Explore</h1>
+
                 <div id="movies_row" className="images_container">
+
 
                     <h1>Movies</h1>
                 </div>
