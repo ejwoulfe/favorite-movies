@@ -19,10 +19,10 @@ function HomePage() {
                 <div id="movies_row" className="images_container">
 
 
-                    <h1>Movies</h1>
+                    <h1 className="images_row_title" >Movies</h1>
                 </div>
                 <div id="actors_row" className="images_container">
-                    <h1>Actors</h1>
+                    <h1 className="images_row_title" >Actors</h1>
                 </div>
 
             </div>
