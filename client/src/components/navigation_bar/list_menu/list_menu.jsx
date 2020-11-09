@@ -23,9 +23,8 @@ function ListMenu() {
 
     return (
         <>
-            <button id="list_button" onClick={buttonClicked}>
-                <img id="list_image" src={list_icon} alt="button to open a navigation list for movies and actors" className="filter-white" />
-            </button>
+
+            <input onClick={buttonClicked} className="view_buttons" id="nav_list_menu" type="image" src={list_icon} alt="button to open a navigation list for movies and actors" />
         </>
     );
 }

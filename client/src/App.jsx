@@ -15,21 +15,26 @@ function App() {
 
 
   return (
-    <LoggedInContext.Provider value={loggedIn}>
-      <Router>
-        <NavBar />
-        <HomePage />
+    <Router>
+      <LoggedInContext.Provider value={loggedIn}>
 
-        {/* <MoviesList ></MoviesList> */}
+        <NavBar />
+        {/* <HomePage /> */}
+
+        {/* <MoviesList /> */}
         {/* <Route path="/" exact component={MoviesList} />
       <Route path="/user" exact component={CreateUser} /> */}
 
 
         {/* <Footer /> */}
+        <Route exact path="/" component={HomePage}></Route>
+        <Route path="/movies_list" component={MoviesList}></Route>
 
 
-      </Router>
-    </LoggedInContext.Provider>
+
+
+      </LoggedInContext.Provider>
+    </Router>
   );
 }
 

@@ -1,23 +1,77 @@
+@import '../../util/variables';
+
+#movies_list_content {
+    min-width: $min-width;
+    margin: 0 auto;
+    max-width: $max-width-large;
+
+
+    #movies_list_title {
+        text-align: center;
+        font-family: $title-font,
+            cursive;
+        font-size: 6rem;
+        font-weight: $title-font-weight;
+    }
+
+    #display_options {
+        text-align: end;
+        padding: 0rem 1.2rem 1rem 0rem;
+
+
+        .view_buttons {
+            background: none;
+            color: inherit;
+            border: none;
+            padding: 0rem .2rem 0rem.2rem;
+            cursor: pointer;
+            outline: inherit;
+            filter: $filter-white;
+            height: 2.1rem;
+
+        }
+    }
+}
+
 .movie_container {
-    background-color: rgba(0, 0, 0, 0.9);
+    background-color: rgba(0, 0, 0, 0.3);
     position: relative;
     min-height: 30rem;
     display: flex;
-    justify-content: flex-start;
-    align-items: flex-start;
+    align-items: flex-end;
     margin-bottom: 5rem;
+    border: 1px solid white;
+
+
+    &:hover {
+        cursor: pointer;
+
+        >.movie_information {
+            background-position: right;
+
+        }
+    }
+
 
 
     .movie_information {
         position: relative;
         width: 100%;
-        background-color: rgba(0, 0, 0, 0.4);
+        transition: .5s ease-out;
+        background: linear-gradient(to left, rgba(124, 124, 124, 0.274) 50%, rgba(0, 0, 0, 0.65) 50%) right;
+        background-size: 200%;
+        background-position: left bottom;
         text-align: center;
         min-height: 8rem;
+        border-top: 1px solid white;
+
+
 
         .movie_title {
-            padding-top: 2.5rem;
-            font-family: 'Merriweather', serif;
+            font-family: $title-font,
+                sans-serif;
+            font-size: 2.7rem;
+            font-weight: $title-font-weight;
 
         }
 
@@ -45,7 +99,7 @@
         height: auto;
         opacity: 0.5;
         object-fit: cover;
-        object-position: 0% 10%;
+        object-position: 0% 25%;
         max-height: 30rem;
 
     }
@@ -53,14 +107,14 @@
 
 }
 
-.movie_container,
-.movie_image {
-    border-radius: 3rem;
-}
+// .movie_container,
+// .movie_image {
+//     border-radius: 3rem;
+// }
 
-.movie_information {
-    border-radius: 3rem 3rem 0 0;
-}
+// .movie_information {
+//     border-radius: 0rem 0rem 3rem 3rem;
+// }
 
 
 
@@ -78,4 +132,14 @@
     }
 
 
+}
+
+@media only screen and (min-width: 1921px) {
+    #movies_list_content {
+        min-width: $min-width;
+        margin: 0 auto;
+        max-width: $max-width-extra-large;
+
+
+    }
 }
