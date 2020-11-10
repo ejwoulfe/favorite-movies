@@ -77,7 +77,9 @@ function MoviesList() {
                     <input onClick={() => setGridView(!gridView)} className="view_buttons" id="grid_view_button" type="image" src={grid_view} alt="Grid view button" />
                 </div>
 
+
                 {gridView ? <GridView movies={moviesList} /> : <ListView movies={moviesList} />}
+
             </div>
 
 
