@@ -31,6 +31,26 @@ function MoviesList() {
 
     // }
     useEffect(() => {
+        /*
+        *  Which ever view is selected, disable to corresponding button and reduce its opacity by 50%.
+        *  The other button will maintain its 100% opacity, changes it occordingly based on the current view.
+        */
+
+        if (gridView) {
+            document.getElementById("list_view_button").disabled = false;
+            document.getElementById("list_view_button").style.opacity = "1";
+
+            document.getElementById("grid_view_button").disabled = true;
+            document.getElementById("grid_view_button").style.opacity = "0.5";
+
+        } else {
+            document.getElementById("grid_view_button").disabled = false;
+            document.getElementById("grid_view_button").style.opacity = "1";
+
+            document.getElementById("list_view_button").disabled = true;
+            document.getElementById("list_view_button").style.opacity = "0.5";
+
+        }
 
 
 
@@ -53,8 +73,8 @@ function MoviesList() {
             <div id="movies_list_content">
                 <h1 id="movies_list_title">Movies</h1>
                 <div id="display_options">
-                    <input className="view_buttons" id="list_view" type="image" src={list_view} alt="List view button" />
-                    <input onClick={() => setGridView(!gridView)} className="view_buttons" id="grid_view" type="image" src={grid_view} alt="Grid view button" />
+                    <input onClick={() => setGridView(!gridView)} className="view_buttons" id="list_view_button" type="image" src={list_view} alt="List view button" />
+                    <input onClick={() => setGridView(!gridView)} className="view_buttons" id="grid_view_button" type="image" src={grid_view} alt="Grid view button" />
                 </div>
 
                 {gridView ? <GridView movies={moviesList} /> : <ListView movies={moviesList} />}
