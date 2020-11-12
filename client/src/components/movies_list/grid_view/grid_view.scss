@@ -13,23 +13,20 @@
         background-color: rgba(0, 0, 0, 0.3);
         position: relative;
         min-height: 30rem;
-        margin-bottom: 5rem;
         border: 1px solid white;
-        width: 100%;
         display: flex;
         align-items: flex-end;
-        flex: 1 1 30%;
-        margin-right: 1rem;
-        // grow shrink basis;
+        flex-basis: auto;
+        flex-grow: 1;
+        flex: 20rem;
+        margin: 1rem 0.5rem 1rem 0.5rem;
+        transition: transform .5s;
 
 
         &:hover {
             cursor: pointer;
+            transform: scale(1.05);
 
-            >.movie_information_grid {
-                background-position: right;
-
-            }
         }
 
 
@@ -84,6 +81,7 @@
             object-position: 0% 25%;
             max-height: 30rem;
 
+
         }
 
 
@@ -91,16 +89,7 @@
 }
 
 /////// MEDIA QUERIES /////////
-@media only screen and (max-width: 700px) {
-    .movie_container_grid {
-        align-items: flex-start;
-        flex-direction: column;
 
-
-    }
-
-
-}
 
 @media only screen and (min-width: 1921px) {
     #movies_list_content_grid {
