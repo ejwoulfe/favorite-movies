@@ -19,10 +19,13 @@ function HomePage() {
                     </div>
                 </Link>
 
+                <Link id="actors_list_link" to="/actors_list">
+                    <div id="actors_row" className="images_container">
+                        <h1 className="images_row_title" >Actors</h1>
+                    </div>
+                </Link>
 
-                <div id="actors_row" className="images_container">
-                    <h1 className="images_row_title" >Actors</h1>
-                </div>
+
 
             </div>
 

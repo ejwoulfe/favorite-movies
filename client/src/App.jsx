@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import NavBar from './components/navigation_bar/navbar';
 import MoviesList from './components/movies_list/movies_list';
+import ActorsList from './components/actors_list/actors_list';
 import HomePage from './components/home_page/home';
 // import Footer from './components/footer/footer';
 
@@ -28,6 +29,7 @@ function App() {
       {/* <Footer /> */}
       <Route exact path="/" component={HomePage}></Route>
       <Route path="/movies_list" component={MoviesList}></Route>
+      <Route path="/actors_list" component={ActorsList}></Route>
 
 
 
