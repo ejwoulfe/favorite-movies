@@ -13,23 +13,7 @@ function ActorsList() {
     const [actorsList, setActorsList] = useState([]);
     const [gridView, setGridView] = useState(false);
 
-    // function formatDate(date) {
-    //     let year = date.getFullYear();
-    //     let month = date.getMonth() + 1;
-    //     let dt = date.getDate();
-    //     console.log(dt)
 
-    //     if (dt < 10) {
-    //         dt = '0' + dt;
-    //     }
-    //     if (month < 10) {
-    //         month = '0' + month;
-    //     }
-
-    //     return (month + '/' + dt + '/' + year);
-
-
-    // }
     useEffect(() => {
         /*
         *  Which ever view is selected, disable to corresponding button and reduce its opacity by 50%.

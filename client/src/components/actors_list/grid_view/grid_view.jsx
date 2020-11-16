@@ -4,9 +4,7 @@ import './grid_view.scss';
 
 function GridView(props) {
 
-    useEffect(() => {
-        console.log(props)
-    })
+
 
     return (
 

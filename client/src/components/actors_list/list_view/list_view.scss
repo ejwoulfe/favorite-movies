@@ -5,7 +5,6 @@
     position: relative;
     min-height: 30rem;
     display: flex;
-    align-items: flex-end;
     margin-bottom: 5rem;
     border: 1px solid white;
 
@@ -13,62 +12,45 @@
     &:hover {
         cursor: pointer;
 
-        >.actor_information_list {
-            background-position: right;
-
-        }
     }
 
 
 
+
     .actor_information_list {
-        position: relative;
         width: 100%;
-        transition: .5s ease-out;
-        background: linear-gradient(to left, rgba(124, 124, 124, 0.274) 50%, rgba(0, 0, 0, 0.65) 50%) right;
-        background-size: 200%;
-        background-position: left bottom;
-        text-align: center;
-        min-height: 8rem;
-        border-top: 1px solid white;
+        display: flex;
+        align-items: flex-end;
+
+        &:hover {
+
+            >.actor_name_container {
+                background-position: right;
+
+            }
+        }
 
 
 
-        .actor_title_list {
+        .actor_name {
+            width: 100%;
             font-family: $title-font,
                 sans-serif;
             font-size: 2.7rem;
             font-weight: $title-font-weight;
 
+
         }
 
-        .actor_rating_list {
-            position: absolute;
-            top: 0rem;
-            right: 1rem;
-            font-family: 'Open Sans', sans-serif;
 
-            .star_icon_list {
-                padding-right: 0.15rem;
-                height: auto;
-                max-width: 28%;
-            }
-        }
 
 
     }
 
-    .actor_image_list {
-        position: absolute;
-        left: 0;
-        top: 0;
-        width: 100%;
-        height: auto;
-        opacity: 0.5;
-        object-fit: cover;
-        object-position: 0% 25%;
-        max-height: 30rem;
-
+    #actor_image_container {
+        flex: 40%;
+        background-position: center;
+        background-size: cover;
     }
 
 
