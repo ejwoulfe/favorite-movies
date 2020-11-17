@@ -1,5 +1,10 @@
 @import '../../../util/variables';
 
+#movies_desc_link {
+    text-decoration: none;
+    color: white;
+}
+
 .movie_container_list {
     background-color: rgba(0, 0, 0, 0.3);
     position: relative;

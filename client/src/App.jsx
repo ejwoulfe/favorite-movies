@@ -4,6 +4,8 @@ import NavBar from './components/navigation_bar/navbar';
 import MoviesList from './components/movies_list/movies_list';
 import ActorsList from './components/actors_list/actors_list';
 import HomePage from './components/home_page/home';
+import MovieDescription from './components/movies_description/movie_description';
+import ActorDescription from './components/actors_description/actor_description';
 // import Footer from './components/footer/footer';
 
 
@@ -19,17 +21,14 @@ function App() {
       {/* <LoggedInContext.Provider value={loggedIn}> */}
 
       <NavBar />
-      {/* <HomePage /> */}
-
-      {/* <MoviesList /> */}
-      {/* <Route path="/" exact component={MoviesList} />
-      <Route path="/user" exact component={CreateUser} /> */}
 
 
-      {/* <Footer /> */}
+
       <Route exact path="/" component={HomePage}></Route>
       <Route path="/movies_list" component={MoviesList}></Route>
       <Route path="/actors_list" component={ActorsList}></Route>
+      <Route path="/movie_description" component={MovieDescription}></Route>
+      <Route path="/actor_description" component={ActorDescription}></Route>
 
 
 

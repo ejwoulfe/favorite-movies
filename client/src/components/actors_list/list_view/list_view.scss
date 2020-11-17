@@ -1,5 +1,11 @@
 @import '../../../util/variables';
 
+#actors_desc_link {
+    text-decoration: none;
+    color: white;
+
+}
+
 .actor_container_list {
     background-color: rgba(0, 0, 0, 0.3);
     position: relative;
@@ -31,21 +37,38 @@
         flex-wrap: nowrap;
 
         .actor_known_movies {
-            width: 12rem;
-            height: 12rem;
+
             display: flex;
             flex-direction: row;
             flex-wrap: nowrap;
             justify-content: space-evenly;
             position: absolute;
-            left: 45%;
             top: 15%;
+            left: 37.5%;
+
+
+            .known_for_title {
+                position: absolute;
+                left: 0%;
+                top: -35%;
+                font-family: $title-font,
+                    sans-serif;
+                font-size: 1.5rem;
+                font-weight: 400;
+            }
+
+
+            .known_movie_container {
+                width: 14rem;
+                height: 14rem;
+            }
+
 
 
             .known_movie {
                 height: 100%;
-                width: 100%;
                 object-fit: contain;
+                border: 1px solid white
             }
 
         }

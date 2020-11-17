@@ -1,5 +1,6 @@
 import React from 'react';
 import { useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import './grid_view.scss';
 
 function GridView(props) {
@@ -12,17 +13,22 @@ function GridView(props) {
 
             {props.actors.map((actor, i) => (
                 <div key={i} className="actor_container_grid">
+                    <Link id="actors_desc_link" to={{ pathname: "/actor_description/" + actor._id, state: { actor: actor } }}>
 
-                    <img className="actor_image_grid" src={actor.image} alt={actor.name + " picture"}></img>
+
+                        <img className="actor_image_grid" src={actor.image} alt={actor.name + " picture"}></img>
 
 
-                    <div className="actor_information_grid">
-                        <h2 className="actor_title_grid">{actor.name}</h2>
-                        <div className="details_container_grid">
+
+                        <div className="actor_information_grid">
+                            <h2 className="actor_title_grid">{actor.name}</h2>
+                            <div className="details_container_grid">
+                            </div>
+
                         </div>
-
-                    </div>
+                    </Link>
                 </div>
+
 
 
             ))}
