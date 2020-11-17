@@ -7,13 +7,20 @@
     display: flex;
     margin-bottom: 5rem;
     border: 1px solid white;
+    flex-wrap: nowrap;
 
 
-    &:hover {
-        cursor: pointer;
+    .actor_image_container {
+        flex: 1 1 40%;
+        background-position: center;
+        background-size: cover;
+        border-right: 1px solid white;
 
+        &:hover {
+            cursor: pointer;
+
+        }
     }
-
 
 
 
@@ -21,11 +28,47 @@
         width: 100%;
         display: flex;
         align-items: flex-end;
+        flex-wrap: nowrap;
 
-        &:hover {
+        .actor_known_movies {
+            width: 12rem;
+            height: 12rem;
+            display: flex;
+            flex-direction: row;
+            flex-wrap: nowrap;
+            justify-content: space-evenly;
+            position: absolute;
+            left: 45%;
+            top: 15%;
 
-            >.actor_name_container {
+
+            .known_movie {
+                height: 100%;
+                width: 100%;
+                object-fit: contain;
+            }
+
+        }
+
+
+
+        .actor_name_container_list {
+            width: 100%;
+            transition: .5s ease-out;
+            background: linear-gradient(to left, rgba(124, 124, 124, 0.274) 50%, rgba(0, 0, 0, 0.65) 50%) right;
+            background-size: 200%;
+            background-position: left bottom;
+            text-align: left;
+            flex: 2 1 60%;
+            padding-left: 10rem;
+            border-top: 1px solid white;
+
+            &:hover {
+                cursor: pointer;
+
+
                 background-position: right;
+
 
             }
         }
@@ -47,20 +90,15 @@
 
     }
 
-    #actor_image_container {
-        flex: 40%;
-        background-position: center;
-        background-size: cover;
-    }
+
 
 
 }
 
 /////// MEDIA QUERIES /////////
-@media only screen and (max-width: 700px) {
+@media only screen and (max-width: 950px) {
     .actor_container_list {
-        align-items: flex-start;
-        flex-direction: column;
+        min-height: 20rem;
 
 
     }
