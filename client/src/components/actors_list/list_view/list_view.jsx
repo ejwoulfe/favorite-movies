@@ -6,7 +6,7 @@ import './list_view.scss';
 function ListView(props) {
 
     function getKnownMovies(actor) {
-        if (actor.name === "Elijah Wood") {
+        if (actor.name === "Elijah Wood" || actor.name === "Orlando Bloom" || actor.name === "Daveigh Chase" || actor.name === "Rumi Hiiragi") {
             return (
                 <div className="actor_known_movies">
                     <h4 className="known_for_title">Known For:</h4>
