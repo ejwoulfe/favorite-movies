@@ -6,24 +6,21 @@ import './list_view.scss';
 function ListView(props) {
 
     function getKnownMovies(actor) {
-        if (actor.name === "Elijah Wood" || actor.name === "Orlando Bloom" || actor.name === "Daveigh Chase"
-            || actor.name === "Rumi Hiiragi" || actor.name === "Miyu Irino" || actor.name === "Cate Blanchett"
-            || actor.name === "Andy Serkis") {
-            return (
-                <div className="actor_known_movies">
-                    <h4 className="known_for_title">Known For:</h4>
-                    <div className="known_movie_container">
-                        <img className="known_movie" src={actor.movies[0].poster} alt={actor.movies[0].title} />
-                    </div>
-                    <div className="known_movie_container">
-                        <img className="known_movie" src={actor.movies[1].poster} alt={actor.movies[1].title} />
-                    </div>
-                    <div className="known_movie_container">
-                        <img className="known_movie" src={actor.movies[2].poster} alt={actor.movies[2].title} />
-                    </div>
+        return (
+            <div className="actor_known_movies">
+                <h4 className="known_for_title">Known For:</h4>
+                <div className="known_movie_container">
+                    <img className="known_movie" src={actor.movies[0].poster} alt={actor.movies[0].title} />
                 </div>
-            )
-        }
+                <div className="known_movie_container">
+                    <img className="known_movie" src={actor.movies[1].poster} alt={actor.movies[1].title} />
+                </div>
+                <div className="known_movie_container">
+                    <img className="known_movie" src={actor.movies[2].poster} alt={actor.movies[2].title} />
+                </div>
+            </div>
+        )
+
 
     }
 
