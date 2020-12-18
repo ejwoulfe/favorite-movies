@@ -18,7 +18,7 @@ function GridView(props) {
 
 
                 <div key={i} className="movie_container_grid">
-                    <Link id="movies_desc_link" to={{ pathname: "/movie_description/" + movie._id, state: { movie: movie } }}>
+                    <Link id="movie_desc_link" to={{ pathname: "/movie_description/" + movie._id, state: { movie: movie } }}>
 
 
                         <img className="movie_image_grid" src={movie.poster} alt={movie.title + " poster"}></img>

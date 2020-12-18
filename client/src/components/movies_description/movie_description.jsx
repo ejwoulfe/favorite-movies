@@ -23,17 +23,26 @@ function MovieDescription(props) {
     return (
 
         <div div id="movie_description_container" >
-            <div id="movie_banner_overlay">
+            <div id="movie_banner_container">
                 <div id="movie_banner" style={{ backgroundImage: `url(${props.location.state.movie.poster})` }}>
+                    <div id="movie_banner_gradient"></div>
                 </div>
                 <div id="movie_banner_information">
                     <h1 id="movie_title">{props.location.state.movie.title}</h1>
-                    <h5 id="movie_director">{props.location.state.movie.director}</h5>
-                    <h5 id="movie_release_date">{formatDate(new Date(props.location.state.movie.year))}</h5>
-                    <h5 id="movie_rating">{(props.location.state.movie.rating)}</h5>
+                    <div id="movie_information">
+                        <div id="movie_information_left">
+                            <h3 id="movie_director">Director: {props.location.state.movie.director}</h3>
+                            <h3 id="movie_release_date">Released: {formatDate(new Date(props.location.state.movie.year))}</h3>
+                        </div>
+                        <div id="movie_information_right">
+
+                            <h3 id="movie_rating">Rating: {(props.location.state.movie.rating)}</h3>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div >
+
+        </div>
     )
 
 }
