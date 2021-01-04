@@ -1,5 +1,6 @@
 import React from 'react';
 import './movie_description.scss';
+import star from '../../Assets/star.png'
 
 
 function MovieDescription(props) {
@@ -36,12 +37,14 @@ function MovieDescription(props) {
                         </div>
                         <div id="movie_information_right">
 
-                            <h3 id="movie_rating">Rating: {(props.location.state.movie.rating)}</h3>
+                            <img id="star_icon" src={star} alt="star"></img><h3 id="movie_rating">Rating: {(props.location.state.movie.rating)}</h3>
                         </div>
                     </div>
                 </div>
             </div>
-
+            <div id="movie_text_description_container">
+                <h3>{props.location.state.movie.description}</h3>
+            </div>
         </div>
     )
 
