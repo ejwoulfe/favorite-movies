@@ -16,14 +16,13 @@ function MovieDescription(props) {
         if (month < 10) {
             month = '0' + month;
         }
-
         return (month + '/' + dt + '/' + year);
 
-
     }
+
     return (
 
-        <div div id="movie_description_container" >
+        <div div id="movie_information_page" >
             <div id="movie_banner_container">
                 <div id="movie_banner" style={{ backgroundImage: `url(${props.location.state.movie.poster})` }}>
                     <div id="movie_banner_gradient"></div>
@@ -42,8 +41,8 @@ function MovieDescription(props) {
                     </div>
                 </div>
             </div>
-            <div id="movie_text_description_container">
-                <h3>{props.location.state.movie.description}</h3>
+            <div id="movie_description_container">
+                <h2 id="movie_description">{props.location.state.movie.description}</h2>
             </div>
         </div>
     )

@@ -1,7 +1,13 @@
 @import '../../util/variables.scss';
 
+#movie_information_page {
+    padding-bottom: 5rem;
+}
+
 #movie_banner_container {
     min-height: 40rem;
+    padding-bottom: 5rem;
+
 }
 
 #movie_banner {
@@ -72,7 +78,7 @@
     }
 }
 
-#movie_text_description_container {
+#movie_description_container {
     max-width: $max-width-large;
     margin: 0 auto;
     min-height: 10rem;
@@ -81,4 +87,19 @@
     border-top: 1px solid white;
     border-bottom: 1px solid white;
     align-content: center;
+    font-family: $desc-font;
+    line-height: 1.5;
+
+    ::first-letter {
+        font-size: 150%;
+
+    }
+
+    #movie_description {
+        padding-top: 2rem;
+        padding-bottom: 3rem;
+        text-align: center;
+    }
+
+
 }
