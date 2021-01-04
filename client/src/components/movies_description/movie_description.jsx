@@ -1,9 +1,14 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import axios from "axios";
 import './movie_description.scss';
 import star from '../../Assets/star.png'
 
 
+
 function MovieDescription(props) {
+
+    const [actorsList, setActorsList] = useState([]);
+
     function formatDate(date) {
         let year = date.getFullYear();
         let month = date.getMonth() + 1;
@@ -19,6 +24,17 @@ function MovieDescription(props) {
         return (month + '/' + dt + '/' + year);
 
     }
+
+    useEffect(() => {
+
+        axios({
+            method: 'GET',
+            url: 'http://localhost:5000/actors/api'
+        }).then(res => {
+            setActorsList(res.data)
+
+        })
+    }, []);
 
     return (
 
@@ -43,6 +59,9 @@ function MovieDescription(props) {
             </div>
             <div id="movie_description_container">
                 <h2 id="movie_description">{props.location.state.movie.description}</h2>
+            </div>
+            <div id="featured_actors">
+
             </div>
         </div>
     )
