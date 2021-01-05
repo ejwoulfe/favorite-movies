@@ -101,5 +101,36 @@
         text-align: center;
     }
 
+}
 
+#featured_actors {
+    max-width: $max-width-large;
+    margin: 0 auto;
+    min-height: 10rem;
+
+    #actors_list {
+        list-style-type: none;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-evenly;
+
+        .actor_container {
+            padding-top: 2.5rem;
+            padding-bottom: 2.5rem;
+
+
+            .actor_image {
+                border: 1px solid white;
+                width: 15rem;
+                height: 25rem;
+                object-fit: cover;
+            }
+
+            .actor_name {
+                text-align: center;
+            }
+        }
+
+
+    }
 }

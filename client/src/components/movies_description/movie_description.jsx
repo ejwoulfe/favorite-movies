@@ -12,18 +12,28 @@ function MovieDescription(props) {
     function formatDate(date) {
         let year = date.getFullYear();
         let month = date.getMonth() + 1;
-        let dt = date.getDate();
-        console.log(dt)
+        let day = date.getDate();
 
-        if (dt < 10) {
-            dt = '0' + dt;
+
+        if (day < 10) {
+            day = '0' + day;
         }
         if (month < 10) {
             month = '0' + month;
         }
-        return (month + '/' + dt + '/' + year);
+        return (month + '/' + day + '/' + year);
 
     }
+    function createListOfActors(actors) {
+
+        return actors.map((value) => {
+            return <li className="actor_container"><img className="actor_image" alt={value.name} src={value.image}></img><h3 className="actor_name">{value.name}</h3></li>
+        })
+
+    }
+    // useEffect(() => {
+    //     console.log(props.location.state.movie.actors)
+    // })
 
     useEffect(() => {
 
@@ -33,8 +43,12 @@ function MovieDescription(props) {
         }).then(res => {
             setActorsList(res.data)
 
+
+
+
         })
     }, []);
+
 
     return (
 
@@ -61,7 +75,7 @@ function MovieDescription(props) {
                 <h2 id="movie_description">{props.location.state.movie.description}</h2>
             </div>
             <div id="featured_actors">
-
+                <ul id="actors_list">{createListOfActors(props.location.state.movie.actors)}</ul>
             </div>
         </div>
     )
