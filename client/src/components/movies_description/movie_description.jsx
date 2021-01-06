@@ -7,13 +7,9 @@ import star from '../../Assets/star.png'
 
 function MovieDescription(props) {
 
-    const [actorsList, setActorsList] = useState([]);
 
     function formatDate(date) {
-        let year = date.getFullYear();
-        let month = date.getMonth() + 1;
-        let day = date.getDate();
-
+        let [month, day, year] = [date.getMonth() + 1, date.getDate(), date.getFullYear()]
 
         if (day < 10) {
             day = '0' + day;
@@ -26,29 +22,11 @@ function MovieDescription(props) {
     }
     function createListOfActors(actors) {
 
-        return actors.map((value) => {
-            return <li className="actor_container"><img className="actor_image" alt={value.name} src={value.image}></img><h3 className="actor_name">{value.name}</h3></li>
+        return actors.map((actor) => {
+            return <li className="actor_container"><img className="actor_image" alt={actor.name} src={actor.image}></img><h3 className="actor_name">{actor.name}</h3></li>
         })
 
     }
-    // useEffect(() => {
-    //     console.log(props.location.state.movie.actors)
-    // })
-
-    useEffect(() => {
-
-        axios({
-            method: 'GET',
-            url: 'http://localhost:5000/actors/api'
-        }).then(res => {
-            setActorsList(res.data)
-
-
-
-
-        })
-    }, []);
-
 
     return (
 
@@ -75,6 +53,7 @@ function MovieDescription(props) {
                 <h2 id="movie_description">{props.location.state.movie.description}</h2>
             </div>
             <div id="featured_actors">
+                <h1 id="actors_header">Featured Actors</h1>
                 <ul id="actors_list">{createListOfActors(props.location.state.movie.actors)}</ul>
             </div>
         </div>

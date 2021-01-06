@@ -89,6 +89,7 @@
     align-content: center;
     font-family: $desc-font;
     line-height: 1.5;
+    margin-bottom: 10rem;
 
     ::first-letter {
         font-size: 150%;
@@ -107,6 +108,14 @@
     max-width: $max-width-large;
     margin: 0 auto;
     min-height: 10rem;
+
+    #actors_header {
+        font-family: $title-font;
+        font-weight: $title-font-weight;
+        font-size: 3.5rem;
+        margin-bottom: 0;
+
+    }
 
     #actors_list {
         list-style-type: none;
