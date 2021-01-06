@@ -21,10 +21,9 @@
     position: absolute;
     overflow: hidden;
     z-index: -1;
-    opacity: 0.5;
 
     #movie_banner_gradient {
-        background-image: linear-gradient(to right, rgb(10, 13, 29) 0%, rgba(19, 22, 34, 0.84) 70%);
+        background-image: linear-gradient(to right, rgb(0, 0, 0) 0%, rgba(0, 0, 0, 0.589) 70%);
         max-width: 200rem;
         width: 100%;
         min-height: 40rem;
@@ -41,7 +40,7 @@
 
 
     #movie_title {
-        padding-top: 2rem;
+        padding-top: 8rem;
         text-align: center;
         font-family: $title-font;
         font-weight: $title-font-weight;
@@ -59,15 +58,25 @@
 
         #movie_information_left {
             flex: 50%;
+            margin-left: 6.5rem;
+
+            #movie_director {
+                padding-bottom: 3.5rem;
+
+            }
+
         }
 
         #movie_information_right {
             flex: 50%;
             display: flex;
             justify-content: flex-end;
+            margin-right: 6.5rem;
+            padding-top: 3rem;
 
             #star_icon {
                 padding-top: 1rem;
+                padding-left: 0.5rem;
                 height: 1.5rem;
             }
 

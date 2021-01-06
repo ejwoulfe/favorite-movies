@@ -43,8 +43,8 @@ function MovieDescription(props) {
                             <h3 id="movie_release_date">Released: {formatDate(new Date(props.location.state.movie.year))}</h3>
                         </div>
                         <div id="movie_information_right">
-
-                            <img id="star_icon" src={star} alt="star"></img><h3 id="movie_rating">Rating: {(props.location.state.movie.rating)}</h3>
+                            <h3 id="movie_rating">Rating: {(props.location.state.movie.rating)}</h3>
+                            <img id="star_icon" src={star} alt="star"></img>
                         </div>
                     </div>
                 </div>
