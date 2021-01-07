@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import axios from "axios";
 import './movie_description.scss';
 import star from '../../Assets/star.png'
@@ -8,6 +8,14 @@ import star from '../../Assets/star.png'
 function MovieDescription(props) {
 
 
+    // When component mounts we want to take the user to the top of the page, instead of starting at the bottom or middle.
+    useEffect(() => {
+        window.scrollTo({ top: 0 });
+
+    });
+
+
+    // Function that converts the ISO date from mongoDB to a mm/dd/yyyy format.
     function formatDate(date) {
         let [month, day, year] = [date.getMonth() + 1, date.getDate(), date.getFullYear()]
 
@@ -20,10 +28,11 @@ function MovieDescription(props) {
         return (month + '/' + day + '/' + year);
 
     }
+
     function createListOfActors(actors) {
 
-        return actors.map((actor) => {
-            return <li className="actor_container"><img className="actor_image" alt={actor.name} src={actor.image}></img><h3 className="actor_name">{actor.name}</h3></li>
+        return actors.map((actor, index) => {
+            return <li key={"actor_" + index} className="actor_container"><img className="actor_image" alt={actor.name} src={actor.image}></img><h3 className="actor_name">{actor.name}</h3></li>
         })
 
     }

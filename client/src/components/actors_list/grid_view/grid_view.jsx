@@ -6,13 +6,12 @@ import './grid_view.scss';
 function GridView(props) {
 
 
-
     return (
 
         <div id="actors_grid_view">
 
             {props.actors.map((actor, i) => (
-                <div key={i} className="actor_container_grid">
+                <div key={"actor_" + i} className="actor_container_grid" >
                     <Link id="actors_desc_link" to={{ pathname: "/actor_description/" + actor._id, state: { actor: actor } }}>
 
 

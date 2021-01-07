@@ -6,10 +6,6 @@ import './grid_view.scss';
 
 function GridView(props) {
 
-    useEffect(() => {
-        console.log(props)
-    })
-
     return (
 
         <div id="movies_grid_view">
@@ -17,7 +13,7 @@ function GridView(props) {
             {props.movies.map((movie, i) => (
 
 
-                <div key={i} className="movie_container_grid">
+                <div key={"movie_" + i} className="movie_container_grid">
                     <Link id="movie_desc_link" to={{ pathname: "/movie_description/" + movie._id, state: { movie: movie } }}>
 
 

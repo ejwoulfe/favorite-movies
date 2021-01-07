@@ -11,8 +11,8 @@ function ListView(props) {
         <div id="movies_list_view">
 
             {props.movies.map((movie, i) => (
-                <Link id="movies_desc_link" to={{ pathname: "/movie_description/" + movie._id, state: { movie: movie } }}>
-                    <div key={i} className="movie_container_list ">
+                <Link key={"movie_" + i} id="movies_desc_link" to={{ pathname: "/movie_description/" + movie._id, state: { movie: movie } }}>
+                    <div className="movie_container_list ">
 
 
                         <img className="movie_image_list " src={movie.poster} alt={movie.title + " poster"}></img>

@@ -1,16 +1,22 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './actor_description.scss';
 
 
 function ActorDescription(props) {
 
-    console.log(props.location.state.actor);
+
+    // When component mounts we want to take the user to the top of the page, instead of starting at the bottom or middle.
+    useEffect(() => {
+        window.scrollTo({ top: 0 });
+
+    });
+
 
     function getListOfMovies(movies) {
 
-        return movies.map((movie) => {
+        return movies.map((movie, index) => {
             return (
-                <li className="movie_container">
+                <li key={"movie_" + index} className="movie_container">
                     <img className="movie_poster" alt={movie.name} src={movie.poster}></img>
                     <h3 className="movie_title">{movie.title}</h3>
                 </li>

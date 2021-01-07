@@ -30,7 +30,7 @@ function ListView(props) {
         <div id="actors_list_view">
 
             {props.actors.map((actor, i) => (
-                <Link id="actors_desc_link" to={{ pathname: "/actor_description/" + actor._id, state: { actor: actor } }}>
+                <Link key={"actor_" + i} id="actors_desc_link" to={{ pathname: "/actor_description/" + actor._id, state: { actor: actor } }}>
 
 
                     <div key={i} className="actor_container_list " >
