@@ -11,7 +11,9 @@ import ListView from './list_view/list_view';
 
 function MoviesList() {
     const [moviesList, setMoviesList] = useState([]);
-    const [gridView, setGridView] = useState(false);
+    const [gridView, setGridView] = useState(JSON.parse(localStorage.getItem('gridViewBoolean')) || false);
+
+
 
 
     useEffect(() => {
@@ -20,6 +22,9 @@ function MoviesList() {
         *  The other button will maintain its 100% opacity, changes it occordingly based on the current view.
         */
 
+        localStorage.setItem('gridViewBoolean', gridView);
+
+        console.log(gridView)
         if (gridView) {
             document.getElementById("list_view_button").disabled = false;
             document.getElementById("list_view_button").style.opacity = "1";
@@ -38,7 +43,6 @@ function MoviesList() {
 
 
 
-
     }, [gridView])
 
     useEffect(() => {
@@ -53,23 +57,24 @@ function MoviesList() {
     }, []);
 
     return (
-        <>
-            <div id="movies_list_content">
-                <h1 id="movies_list_title">Movies</h1>
-                <div id="display_options">
-                    <input onClick={() => setGridView(!gridView)} className="view_buttons" id="list_view_button" type="image" src={list_view} alt="List view button" />
-                    <input onClick={() => setGridView(!gridView)} className="view_buttons" id="grid_view_button" type="image" src={grid_view} alt="Grid view button" />
-                </div>
 
-
-                {gridView ? <GridView movies={moviesList} /> : <ListView movies={moviesList} />}
-
+        <div id="movies_list_content">
+            <h1 id="movies_list_title">Movies</h1>
+            <div id="display_options">
+                <input onClick={() => { setGridView((gridView) => !gridView) }} className="view_buttons" id="list_view_button" type="image" src={list_view} alt="List view button" />
+                <input onClick={() => { setGridView((gridView) => !gridView) }} className="view_buttons" id="grid_view_button" type="image" src={grid_view} alt="Grid view button" />
             </div>
 
 
 
+            {gridView ? <GridView movies={moviesList} /> : <ListView movies={moviesList} />}
 
-        </>
+        </div>
+
+
+
+
+
 
 
 

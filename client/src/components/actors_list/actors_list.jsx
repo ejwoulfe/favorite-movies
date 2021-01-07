@@ -11,7 +11,7 @@ import './actors_list.scss';
 
 function ActorsList() {
     const [actorsList, setActorsList] = useState([]);
-    const [gridView, setGridView] = useState(false);
+    const [gridView, setGridView] = useState(JSON.parse(localStorage.getItem('gridViewBoolean')) || false);
 
 
     useEffect(() => {
@@ -19,6 +19,9 @@ function ActorsList() {
         *  Which ever view is selected, disable to corresponding button and reduce its opacity by 50%.
         *  The other button will maintain its 100% opacity, changes it occordingly based on the current view.
         */
+
+        localStorage.setItem('gridViewBoolean', gridView);
+
 
         if (gridView) {
             document.getElementById("list_view_button").disabled = false;
