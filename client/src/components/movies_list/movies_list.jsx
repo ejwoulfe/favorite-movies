@@ -11,7 +11,7 @@ import ListView from './list_view/list_view';
 
 function MoviesList() {
     const [moviesList, setMoviesList] = useState([]);
-    const [gridView, setGridView] = useState(JSON.parse(localStorage.getItem('gridViewBoolean')) || false);
+    const [gridView, setGridView] = useState(JSON.parse(localStorage.getItem('moviesGridViewBoolean')) || false);
 
 
 
@@ -22,7 +22,7 @@ function MoviesList() {
         *  The other button will maintain its 100% opacity, changes it occordingly based on the current view.
         */
 
-        localStorage.setItem('gridViewBoolean', gridView);
+        localStorage.setItem('moviesGridViewBoolean', gridView);
 
         console.log(gridView)
         if (gridView) {
