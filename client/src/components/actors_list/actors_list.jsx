@@ -11,7 +11,7 @@ import './actors_list.scss';
 
 function ActorsList() {
     const [actorsList, setActorsList] = useState([]);
-    const [gridView, setGridView] = useState(JSON.parse(localStorage.getItem('actorsGridViewBoolean')) || false);
+    const [gridView, setGridView] = useState(JSON.parse(sessionStorage.getItem('actorsGridViewBoolean')) || false);
 
 
     useEffect(() => {
@@ -20,7 +20,7 @@ function ActorsList() {
         *  The other button will maintain its 100% opacity, changes it occordingly based on the current view.
         */
 
-        localStorage.setItem('actorsGridViewBoolean', gridView);
+        sessionStorage.setItem('actorsGridViewBoolean', gridView);
 
 
         if (gridView) {

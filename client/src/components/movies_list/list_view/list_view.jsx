@@ -1,4 +1,5 @@
 import React from 'react';
+import { useEffect } from 'react';
 import star from '../../../Assets/star.png';
 import { Link } from 'react-router-dom';
 import './list_view.scss';
@@ -6,12 +7,33 @@ import './list_view.scss';
 
 function ListView(props) {
 
+    useEffect(() => {
+        setTimeout(() => {
+            handleScrollPosition();
+        }, 1000);
+
+    }, []);
+
+
+    function handleScrollPosition() {
+        const scrollPosition = sessionStorage.getItem("scrollPosition");
+        if (scrollPosition) {
+            window.scrollTo(0, parseInt(scrollPosition));
+
+            sessionStorage.removeItem("scrollPosition");
+        }
+    };
+
+    // store position in sessionStorage
+    function handleClick() {
+        sessionStorage.setItem("scrollPosition", window.pageYOffset);
+    };
 
     return (
         <div id="movies_list_view">
 
             {props.movies.map((movie, i) => (
-                <Link key={"movie_" + i} id="movies_desc_link" to={{ pathname: "/movie_description/" + movie._id, state: { movie: movie } }}>
+                <Link onClick={() => handleClick()} key={"movie_" + i} id="movies_desc_link" to={{ pathname: "/movie_description/" + movie._id, state: { movie: movie } }}>
                     <div className="movie_container_list ">
 
 

@@ -5,6 +5,27 @@ import './grid_view.scss';
 
 function GridView(props) {
 
+    useEffect(() => {
+        setTimeout(() => {
+            handleScrollPosition();
+        }, 1000);
+
+    }, []);
+
+
+    function handleScrollPosition() {
+        const scrollPosition = sessionStorage.getItem("scrollPosition");
+        if (scrollPosition) {
+            window.scrollTo(0, parseInt(scrollPosition));
+
+            sessionStorage.removeItem("scrollPosition");
+        }
+    };
+
+    // store position in sessionStorage
+    function handleClick() {
+        sessionStorage.setItem("scrollPosition", window.pageYOffset);
+    };
 
     return (
 
@@ -12,7 +33,7 @@ function GridView(props) {
 
             {props.actors.map((actor, i) => (
                 <div key={"actor_" + i} className="actor_container_grid" >
-                    <Link id="actors_desc_link" to={{ pathname: "/actor_description/" + actor._id, state: { actor: actor } }}>
+                    <Link onClick={() => handleClick()} id="actors_desc_link" to={{ pathname: "/actor_description/" + actor._id, state: { actor: actor } }}>
 
 
                         <img className="actor_image_grid" src={actor.image} alt={actor.name + " picture"}></img>

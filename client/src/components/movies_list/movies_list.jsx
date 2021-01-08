@@ -11,7 +11,8 @@ import ListView from './list_view/list_view';
 
 function MoviesList() {
     const [moviesList, setMoviesList] = useState([]);
-    const [gridView, setGridView] = useState(JSON.parse(localStorage.getItem('moviesGridViewBoolean')) || false);
+    const [gridView, setGridView] = useState(JSON.parse(sessionStorage.getItem('moviesGridViewBoolean')) || false);
+
 
 
 
@@ -22,9 +23,9 @@ function MoviesList() {
         *  The other button will maintain its 100% opacity, changes it occordingly based on the current view.
         */
 
-        localStorage.setItem('moviesGridViewBoolean', gridView);
+        sessionStorage.setItem('moviesGridViewBoolean', gridView);
 
-        console.log(gridView)
+
         if (gridView) {
             document.getElementById("list_view_button").disabled = false;
             document.getElementById("list_view_button").style.opacity = "1";
@@ -47,14 +48,22 @@ function MoviesList() {
 
     useEffect(() => {
 
+
+
         axios({
             method: 'GET',
             url: 'http://localhost:5000/movies/api'
         }).then(res => {
             setMoviesList(res.data)
 
+
         })
     }, []);
+
+
+
+
+
 
     return (
 

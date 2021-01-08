@@ -1,9 +1,12 @@
 import React from 'react';
+import { useEffect } from 'react';
+
 import { Link } from 'react-router-dom';
 import './list_view.scss';
 
 
 function ListView(props) {
+
 
     function getKnownMovies(actor) {
         return (
@@ -25,12 +28,35 @@ function ListView(props) {
     }
 
 
+    useEffect(() => {
+        setTimeout(() => {
+            handleScrollPosition();
+        }, 1000);
+
+    }, []);
+
+
+    function handleScrollPosition() {
+        const scrollPosition = sessionStorage.getItem("scrollPosition");
+        if (scrollPosition) {
+            window.scrollTo(0, parseInt(scrollPosition));
+
+            sessionStorage.removeItem("scrollPosition");
+        }
+    };
+
+    // store position in sessionStorage
+    function handleClick() {
+        sessionStorage.setItem("scrollPosition", window.pageYOffset);
+    };
+
+
 
     return (
         <div id="actors_list_view">
 
             {props.actors.map((actor, i) => (
-                <Link key={"actor_" + i} id="actors_desc_link" to={{ pathname: "/actor_description/" + actor._id, state: { actor: actor } }}>
+                <Link onClick={() => handleClick()} key={"actor_" + i} id="actors_desc_link" to={{ pathname: "/actor_description/" + actor._id, state: { actor: actor } }}>
 
 
                     <div key={i} className="actor_container_list " >

@@ -6,6 +6,29 @@ import './grid_view.scss';
 
 function GridView(props) {
 
+    useEffect(() => {
+        setTimeout(() => {
+            handleScrollPosition();
+        }, 1000);
+
+    }, []);
+
+
+    function handleScrollPosition() {
+        const scrollPosition = sessionStorage.getItem("scrollPosition");
+        if (scrollPosition) {
+            window.scrollTo(0, parseInt(scrollPosition));
+
+            sessionStorage.removeItem("scrollPosition");
+        }
+    };
+
+    // store position in sessionStorage
+    function handleClick() {
+        sessionStorage.setItem("scrollPosition", window.pageYOffset);
+    };
+
+
     return (
 
         <div id="movies_grid_view">
@@ -14,7 +37,7 @@ function GridView(props) {
 
 
                 <div key={"movie_" + i} className="movie_container_grid">
-                    <Link id="movie_desc_link" to={{ pathname: "/movie_description/" + movie._id, state: { movie: movie } }}>
+                    <Link onClick={() => handleClick()} id="movie_desc_link" to={{ pathname: "/movie_description/" + movie._id, state: { movie: movie } }}>
 
 
                         <img className="movie_image_grid" src={movie.poster} alt={movie.title + " poster"}></img>
