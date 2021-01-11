@@ -2,19 +2,17 @@ import React from 'react';
 import axios from "axios";
 import { useState } from 'react';
 import { useEffect } from 'react';
-import './movies_list.scss';
+import './data_lists.scss';
 import list_view from '../../Assets/UI Icons/list-view.svg'
 import grid_view from '../../Assets/UI Icons/grid-view.svg'
-import GridView from './grid_view/grid_view';
-import ListView from './list_view/list_view';
 
 
-function MoviesList() {
-    const [moviesList, setMoviesList] = useState([]);
+
+function ListComponent(props) {
+    const [dataList, setDataList] = useState([]);
     const [gridView, setGridView] = useState(JSON.parse(sessionStorage.getItem('moviesGridViewBoolean')) || false);
-
-
-
+    const [pathName] = useState(props.location.pathname);
+    const [isMoviesPage, setIsMoviesPage] = useState(false);
 
 
     useEffect(() => {
@@ -48,17 +46,30 @@ function MoviesList() {
 
     useEffect(() => {
 
+        let underScoreIndex = pathName.indexOf("_");
+        let dataName = pathName.substring(1, underScoreIndex);
+        let fetchUrl = 'http://localhost:5000/' + dataName + '/api';
+
 
 
         axios({
             method: 'GET',
-            url: 'http://localhost:5000/movies/api'
+            url: fetchUrl
         }).then(res => {
-            setMoviesList(res.data)
+            setDataList(res.data)
 
 
         })
-    }, []);
+
+        if (dataName === "movies") {
+            setIsMoviesPage(true);
+        } else {
+            setIsMoviesPage(false);
+        }
+
+
+    }, [pathName]);
+
 
 
 
@@ -67,8 +78,8 @@ function MoviesList() {
 
     return (
 
-        <div id="movies_list_content">
-            <h1 id="movies_list_title">Movies</h1>
+        <div id="data_list_content">
+            <h1 id="data_list_title">{isMoviesPage ? "Movies" : "Actors"}</h1>
             <div id="display_options">
                 <input onClick={() => { setGridView((gridView) => !gridView) }} className="view_buttons" id="list_view_button" type="image" src={list_view} alt="List view button" />
                 <input onClick={() => { setGridView((gridView) => !gridView) }} className="view_buttons" id="grid_view_button" type="image" src={grid_view} alt="Grid view button" />
@@ -76,9 +87,13 @@ function MoviesList() {
 
 
 
-            {gridView ? <GridView movies={moviesList} /> : <ListView movies={moviesList} />}
+            {
+                dataList.map((actor, i) => (
+                    <h4>{actor.title}</h4>
+                ))
+            }
 
-        </div>
+        </div >
 
 
 
@@ -91,4 +106,4 @@ function MoviesList() {
     );
 }
 
-export default MoviesList;
+export default ListComponent;

@@ -1,12 +1,12 @@
 @import '../../util/variables';
 
-#movies_list_content {
+#data_list_content {
     min-width: $min-width;
     margin: 0 auto;
     max-width: $max-width-large;
 
 
-    #movies_list_title {
+    #data_list_title {
         text-align: center;
         font-family: $title-font,
             cursive;
