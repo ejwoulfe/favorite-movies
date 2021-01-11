@@ -3,6 +3,7 @@ import axios from "axios";
 import { useState } from 'react';
 import { useEffect } from 'react';
 import './data_lists.scss';
+import GridView from './grid_view/grid_view';
 import list_view from '../../Assets/UI Icons/list-view.svg'
 import grid_view from '../../Assets/UI Icons/grid-view.svg'
 
@@ -13,7 +14,7 @@ function ListComponent(props) {
     const [gridView, setGridView] = useState(JSON.parse(sessionStorage.getItem('moviesGridViewBoolean')) || false);
     const [pathName] = useState(props.location.pathname);
     const [isMoviesPage, setIsMoviesPage] = useState(false);
-
+    let dataObject = {};
 
     useEffect(() => {
         /*
@@ -40,8 +41,6 @@ function ListComponent(props) {
 
         }
 
-
-
     }, [gridView])
 
     useEffect(() => {
@@ -50,14 +49,11 @@ function ListComponent(props) {
         let dataName = pathName.substring(1, underScoreIndex);
         let fetchUrl = 'http://localhost:5000/' + dataName + '/api';
 
-
-
         axios({
             method: 'GET',
             url: fetchUrl
         }).then(res => {
             setDataList(res.data)
-
 
         })
 
@@ -67,13 +63,7 @@ function ListComponent(props) {
             setIsMoviesPage(false);
         }
 
-
     }, [pathName]);
-
-
-
-
-
 
 
     return (
@@ -87,11 +77,40 @@ function ListComponent(props) {
 
 
 
-            {
-                dataList.map((actor, i) => (
-                    <h4>{actor.title}</h4>
-                ))
+
+            {/* Create Actor/Movie Object and pass it down through props to Description Component
+            Movie: {
+                name: movie.title,
+                image: movie.poster,
+                description: movie.description,
+                array: movie.actors,
+                subInfo: {
+                    1: movie.rating,
+                    2: movie.director,
+                    3: movie.releaseDate,
+                    4: movie.year
+                }
+            } 
+            Actor: {
+                name: actor.name,
+                image: actor.image,
+                description: actor.description,
+                array: actor.movies,
+                subInfo: {
+                    1: actor.birth_year
+                }
+            }*/}
+
+            if(isMoviesPage && gridView){
+                <GridView movies={dataObject} />}
+            else if(isMoviesPage && !gridView){<GridView movies={dataObject} />
+            }    else if(!isMoviePage && gridView){
+                <GridView actors={dataObject} />
+            }else if(!isMoviePage && !gridView){
+                <GridView actors={dataObject} />
             }
+
+
 
         </div >
 
