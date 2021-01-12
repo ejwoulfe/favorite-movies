@@ -1,0 +1,102 @@
+@import '../../../../util/variables';
+
+#movies_desc_link {
+    text-decoration: none;
+    color: white;
+}
+
+.movie_container_list {
+    background-color: rgba(0, 0, 0, 0.3);
+    position: relative;
+    min-height: 30rem;
+    display: flex;
+    align-items: flex-end;
+    margin-bottom: 5rem;
+    border: 1px solid white;
+
+
+    &:hover {
+        cursor: pointer;
+
+        >.movie_information_list {
+            background-position: right;
+
+        }
+    }
+
+
+
+    .movie_information_list {
+        position: relative;
+        width: 100%;
+        transition: .5s ease-out;
+        background: linear-gradient(to left, rgba(124, 124, 124, 0.274) 50%, rgba(0, 0, 0, 0.65) 50%) right;
+        background-size: 200%;
+        background-position: left bottom;
+        text-align: center;
+        min-height: 8rem;
+        border-top: 1px solid white;
+
+
+
+        .movie_title_list {
+            font-family: $title-font,
+                sans-serif;
+            font-size: 2.7rem;
+            font-weight: $title-font-weight;
+
+        }
+
+        .movie_rating_list {
+            position: absolute;
+            top: 0rem;
+            right: 1rem;
+            font-family: 'Open Sans', sans-serif;
+
+            .star_icon_list {
+                padding-right: 0.15rem;
+                height: auto;
+                max-width: 28%;
+            }
+        }
+
+
+    }
+
+    .movie_image_list {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: auto;
+        opacity: 0.5;
+        object-fit: cover;
+        object-position: 0% 25%;
+        max-height: 30rem;
+
+    }
+
+
+}
+
+/////// MEDIA QUERIES /////////
+@media only screen and (max-width: 700px) {
+    .movie_container_list {
+        align-items: flex-start;
+        flex-direction: column;
+
+
+    }
+
+
+}
+
+@media only screen and (min-width: 1921px) {
+    #movies_list_content_list {
+        min-width: $min-width;
+        margin: 0 auto;
+        max-width: $max-width-extra-large;
+
+
+    }
+}

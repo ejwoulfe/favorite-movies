@@ -1,7 +1,5 @@
 import React from 'react';
 import { useEffect } from 'react';
-import star from '../../../Assets/star.png';
-import { Link } from 'react-router-dom';
 import './grid_view.scss';
 
 function GridView(props) {
@@ -33,7 +31,9 @@ function GridView(props) {
 
         <div id="movies_grid_view">
 
-            {props.movies.map((movie, i) => (
+            <h1>Grid View</h1>
+
+            {/* {props.movies.map((movie, i) => (
 
 
                 <div key={"movie_" + i} className="movie_container_grid">
@@ -54,7 +54,7 @@ function GridView(props) {
                 </div>
 
 
-            ))}
+            ))} */}
 
         </div>
     )
