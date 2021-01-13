@@ -49,21 +49,26 @@ function ListComponent(props) {
     function createDataObjectsFromMovies(data) {
         let dataObjectsArray = [];
         let dataObject = {
-            'name': '',
-            'image': '',
-            'description': '',
-            'infoArr': [],
-            'subInfo': []
+            id: '',
+            name: '',
+            image: '',
+            description: '',
+            infoArr: [],
+            subInfo: [],
+            type: ''
         }
 
         dataObjectsArray = data.map((movie) => {
 
             dataObject = {};
+            dataObject.id = movie._id;
             dataObject.name = movie.title;
             dataObject.image = movie.poster;
             dataObject.description = movie.description;
             dataObject.infoArr = movie.actors;
             dataObject.subInfo = [movie.rating, movie.director, movie.year]
+            dataObject.type = 'movie';
+
 
             return dataObject;
 
@@ -76,21 +81,25 @@ function ListComponent(props) {
     function createDataObjectsFromActors(data) {
         let dataObjectsArray = [];
         let dataObject = {
-            'name': '',
-            'image': '',
-            'description': '',
-            'infoArr': [],
-            'subInfo': []
+            id: '',
+            name: '',
+            image: '',
+            description: '',
+            infoArr: [],
+            subInfo: [],
+            type: ''
         }
 
         dataObjectsArray = data.map((actor) => {
 
             dataObject = {};
+            dataObject.id = actor._id;
             dataObject.name = actor.name;
             dataObject.image = actor.image;
             dataObject.description = actor.description;
             dataObject.infoArr = actor.movies;
-            dataObject.subInfo = [actor.birth_year]
+            dataObject.subInfo = [actor.birth_year];
+            dataObject.type = 'actor';
 
             return dataObject;
 

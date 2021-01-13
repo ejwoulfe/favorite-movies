@@ -1,0 +1,100 @@
+@import '../../../../util/variables';
+
+#object_desc_link {
+    text-decoration: none;
+    color: white;
+}
+
+#grid_view {
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+    .object_container_grid {
+        background-color: rgba(0, 0, 0, 0.3);
+        position: relative;
+        min-height: 30rem;
+        border: 1px solid white;
+        display: flex;
+        align-items: flex-end;
+        flex-basis: auto;
+        flex-grow: 1;
+        flex: 20rem;
+        margin: 1rem 0.5rem 1rem 0.5rem;
+        transition: transform .5s;
+
+
+        &:hover {
+            cursor: pointer;
+            transform: scale(1.05);
+
+        }
+
+        #object_desc_link {
+            text-decoration: none;
+            color: white;
+            width: 100%;
+
+        }
+    }
+
+
+
+    .object_information_grid {
+        position: relative;
+        width: 100%;
+        transition: .5s ease-out;
+        background: linear-gradient(to left, rgba(124, 124, 124, 0.274) 50%, rgba(0, 0, 0, 0.65) 50%) right;
+        background-size: 200%;
+        background-position: left bottom;
+        text-align: center;
+        min-height: 7rem;
+        border-top: 1px solid white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+
+
+        .object_name_grid {
+            font-family: $title-font,
+                sans-serif;
+            font-size: 1.5rem;
+            font-weight: $title-font-weight;
+
+        }
+
+
+
+
+    }
+
+    .object_image_grid {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: auto;
+        opacity: 0.5;
+        object-fit: cover;
+        object-position: 0% 25%;
+        max-height: 30rem;
+
+    }
+
+
+
+
+}
+
+/////// MEDIA QUERIES /////////
+@media only screen and (min-width: 1921px) {
+    #object_list_content_grid {
+        min-width: $min-width;
+        margin: 0 auto;
+        max-width: $max-width-extra-large;
+
+
+    }
+}

@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { useEffect } from 'react';
 import './grid_view.scss';
 
@@ -29,33 +30,28 @@ function GridView(props) {
 
     return (
 
-        <div id="movies_grid_view">
-
-            <h1>Grid View</h1>
+        <div id="grid_view">
 
 
-            {/* {props.movies.map((movie, i) => (
+            {props.data.map((object, i) => (
+                <Link onClick={() => handleClick()} key={"object_" + i} id="object_desc_link" to={{ pathname: `/${object.type}_description/ + ${object.id}`, state: { object: object } }}>
+                    <div className="object_container_grid">
 
 
-                <div key={"movie_" + i} className="movie_container_grid">
-                    <Link onClick={() => handleClick()} id="movie_desc_link" to={{ pathname: "/movie_description/" + movie._id, state: { movie: movie } }}>
+                        <img className="object_image_grid" src={object.image} alt={object.name + " image"}></img>
 
 
-                        <img className="movie_image_grid" src={movie.poster} alt={movie.title + " poster"}></img>
-
-
-                        <div className="movie_information_grid">
-                            <h2 className="movie_title_grid">{movie.title}</h2>
+                        <div className="object_information_grid">
+                            <h2 className="object_name_grid">{object.name}</h2>
                             <div className="details_container_grid">
-                                <h5 className="movie_rating_grid"><img className="star_icon_grid" src={star} alt="star_icon" />{movie.rating + "/10"}</h5>
+
                             </div>
 
                         </div>
-                    </Link>
-                </div>
+                    </div>
 
-
-            ))} */}
+                </Link>
+            ))}
 
         </div>
     )

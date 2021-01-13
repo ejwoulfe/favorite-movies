@@ -31,28 +31,26 @@ function ListView(props) {
 
     return (
         <div id="list_view">
-            <h1>List View</h1>
-
 
 
             {props.data.map((object, i) => (
-                // <Link onClick={() => handleClick()} key={"object_" + i} id="object_desc_link" to={{ pathname: "/movie_description/" + object._id, state: { object: object } }}>
-                <div className="object_container_list ">
+                <Link onClick={() => handleClick()} key={"object_" + i} id="object_desc_link" to={{ pathname: `/${object.type}_description/ + ${object.id}`, state: { object: object } }}>
+                    <div className="object_container_list">
 
 
-                    <img className="object_image_list " src={object.image} alt={object.name + " image"}></img>
+                        <img className="object_image_list" src={object.image} alt={object.name + " image"}></img>
 
 
-                    <div className="object_information_list ">
-                        <h2 className="object_name_list ">{object.name}</h2>
-                        <div className="details_container_list ">
+                        <div className="object_information_list">
+                            <h2 className="object_name_list">{object.name}</h2>
+                            <div className="details_container_list">
+
+                            </div>
 
                         </div>
-
                     </div>
-                </div>
 
-                // </Link>
+                </Link>
             ))}
 
         </div>
