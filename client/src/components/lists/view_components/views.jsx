@@ -8,6 +8,8 @@ import grid_view_icon from '../../../Assets/UI Icons/grid-view.svg';
 
 function Views(props) {
     const [isGridView, setIsGridView] = useState(JSON.parse(sessionStorage.getItem('gridViewBoolean')) || false);
+    const [loading, setLoading] = useState(true);
+
     useEffect(() => {
         /*
         *  Which ever view is selected, disable to corresponding button and reduce its opacity by 50%.
@@ -36,7 +38,28 @@ function Views(props) {
 
         }
 
-    }, [isGridView])
+    }, [isGridView]);
+
+
+    useEffect(() => {
+        if (props.data.length > 0) {
+            setLoading(false);
+        }
+
+    }, [props]);
+
+
+    function loadViews() {
+        if (isGridView) {
+            return (
+                <GridView data={props.data} />
+            )
+        } else {
+            return (
+                <ListView data={props.data} />
+            )
+        }
+    }
 
     return (
         <>
@@ -45,8 +68,7 @@ function Views(props) {
                 <input onClick={() => { setIsGridView((isGridView) => !isGridView) }} className="view_buttons" id="grid_view_button" type="image" src={grid_view_icon} alt="Grid view button" />
             </div>
 
-
-            {isGridView ? <GridView data={props} /> : <ListView data={props} />}
+            {loading ? <h1>Loading</h1> : loadViews()}
         </>
 
     )

@@ -36,6 +36,71 @@ function ListComponent(props) {
 
     }, [pathName]);
 
+    useEffect(() => {
+
+        if (dataList.length > 0 && isMoviesPage) {
+            createDataObjectsFromMovies(dataList);
+
+        } else if (dataList.lenght > 0 && !isMoviesPage) {
+            createDataObjectsFromActors(dataList);
+        }
+    }, [dataList, isMoviesPage]);
+
+    function createDataObjectsFromMovies(data) {
+        let dataObjectsArray = [];
+        let dataObject = {
+            'name': '',
+            'image': '',
+            'description': '',
+            'infoArr': [],
+            'subInfo': []
+        }
+
+        dataObjectsArray = data.map((movie) => {
+
+            dataObject = {};
+            dataObject.name = movie.title;
+            dataObject.image = movie.poster;
+            dataObject.description = movie.description;
+            dataObject.infoArr = movie.actors;
+            dataObject.subInfo = [movie.rating, movie.director, movie.year]
+
+            return dataObject;
+
+        })
+
+        return dataObjectsArray;
+
+    }
+
+    function createDataObjectsFromActors(data) {
+        let dataObjectsArray = [];
+        let dataObject = {
+            'name': '',
+            'image': '',
+            'description': '',
+            'infoArr': [],
+            'subInfo': []
+        }
+
+        dataObjectsArray = data.map((actor) => {
+
+            dataObject = {};
+            dataObject.name = actor.name;
+            dataObject.image = actor.image;
+            dataObject.description = actor.description;
+            dataObject.infoArr = actor.movies;
+            dataObject.subInfo = [actor.birth_year]
+
+            return dataObject;
+
+        })
+
+        return dataObjectsArray;
+
+    }
+
+
 
 
 
@@ -72,7 +137,7 @@ function ListComponent(props) {
             }*/}
 
 
-            <Views data={dataList} />
+            {isMoviesPage ? <Views data={createDataObjectsFromMovies(dataList)} /> : <Views data={createDataObjectsFromActors(dataList)} />}
 
 
 

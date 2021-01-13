@@ -1,11 +1,11 @@
 @import '../../../../util/variables';
 
-#movies_desc_link {
+#object_desc_link {
     text-decoration: none;
     color: white;
 }
 
-.movie_container_list {
+.object_container_list {
     background-color: rgba(0, 0, 0, 0.3);
     position: relative;
     min-height: 30rem;
@@ -18,7 +18,7 @@
     &:hover {
         cursor: pointer;
 
-        >.movie_information_list {
+        >.object_information_list {
             background-position: right;
 
         }
@@ -26,7 +26,7 @@
 
 
 
-    .movie_information_list {
+    .object_information_list {
         position: relative;
         width: 100%;
         transition: .5s ease-out;
@@ -39,7 +39,7 @@
 
 
 
-        .movie_title_list {
+        .object_name_list {
             font-family: $title-font,
                 sans-serif;
             font-size: 2.7rem;
@@ -47,7 +47,7 @@
 
         }
 
-        .movie_rating_list {
+        .object_rating_list {
             position: absolute;
             top: 0rem;
             right: 1rem;
@@ -63,7 +63,7 @@
 
     }
 
-    .movie_image_list {
+    .object_image_list {
         position: absolute;
         left: 0;
         top: 0;
@@ -81,7 +81,7 @@
 
 /////// MEDIA QUERIES /////////
 @media only screen and (max-width: 700px) {
-    .movie_container_list {
+    .object_container_list {
         align-items: flex-start;
         flex-direction: column;
 
@@ -92,7 +92,7 @@
 }
 
 @media only screen and (min-width: 1921px) {
-    #movies_list_content_list {
+    #object_list_content_list {
         min-width: $min-width;
         margin: 0 auto;
         max-width: $max-width-extra-large;

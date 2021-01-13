@@ -33,6 +33,7 @@ function GridView(props) {
 
             <h1>Grid View</h1>
 
+
             {/* {props.movies.map((movie, i) => (
 
 
