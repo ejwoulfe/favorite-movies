@@ -31,6 +31,10 @@
                 cursor: pointer;
                 transform: scale(1.05);
 
+                >.object_image_grid {
+                    opacity: 1;
+                }
+
             }
 
 
@@ -42,8 +46,7 @@
     .object_information_grid {
         position: relative;
         width: 100%;
-        transition: .5s ease-out;
-        background: linear-gradient(to left, rgba(124, 124, 124, 0.274) 50%, rgba(0, 0, 0, 0.65) 50%) right;
+        background: rgba(0, 0, 0, 1);
         background-size: 200%;
         background-position: left bottom;
         text-align: center;
@@ -60,6 +63,7 @@
                 sans-serif;
             font-size: 1.5rem;
             font-weight: $title-font-weight;
+            padding: 0 2rem 0 2rem;
 
         }
 
@@ -78,6 +82,7 @@
         object-fit: cover;
         object-position: 0% 25%;
         max-height: 30rem;
+        transition: opacity .6s;
 
     }
 

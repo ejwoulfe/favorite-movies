@@ -2,10 +2,9 @@ import React, { useState } from 'react';
 import axios from "axios";
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import NavBar from './components/navigation_bar/navbar';
-import ListComponent from './components/lists/data_lists';
+import DataList from './components/lists/data_lists';
 import HomePage from './components/home_page/home';
-import MovieDescription from './components/movies_description/movie_description';
-import ActorDescription from './components/actors_description/actor_description';
+import Description from './components/description_page/description';
 // import Footer from './components/footer/footer';
 
 
@@ -26,10 +25,10 @@ function App() {
 
 
       <Route exact path="/" component={HomePage}></Route>
-      <Route path="/movies_list" component={ListComponent}></Route>
-      <Route path="/actors_list" component={ListComponent}></Route>
-      <Route path="/movie_description" component={MovieDescription}></Route>
-      <Route path="/actor_description" component={ActorDescription}></Route>
+      <Route path="/movies_list" component={DataList}></Route>
+      <Route path="/actors_list" component={DataList}></Route>
+      <Route path="/movie_description" component={Description}></Route>
+      <Route path="/actor_description" component={Description}></Route>
 
 
 

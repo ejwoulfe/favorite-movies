@@ -9,7 +9,8 @@
 
 
 
-// Movie List View Styling
+/////// Movie List View Styling ///////// 
+
 .movie_container_list {
     background-color: rgba(0, 0, 0, 0.3);
     position: relative;
@@ -23,10 +24,12 @@
     &:hover {
         cursor: pointer;
 
-        >.movie_information_list {
-            background-position: right;
-
+        >.movie_image_list {
+            opacity: 1;
         }
+
+
+
     }
 
 
@@ -34,8 +37,7 @@
     .movie_information_list {
         position: relative;
         width: 100%;
-        transition: .5s ease-out;
-        background: linear-gradient(to left, rgba(124, 124, 124, 0.274) 50%, rgba(0, 0, 0, 0.65) 50%) right;
+        background: rgba(0, 0, 0, 1);
         background-size: 200%;
         background-position: left bottom;
         text-align: center;
@@ -67,6 +69,9 @@
         object-fit: cover;
         object-position: 0% 25%;
         max-height: 30rem;
+        transition: opacity .6s;
+
+
 
     }
 }
@@ -74,7 +79,7 @@
 
 
 
-// Actor List View Styling
+/////// Actor List View Styling ///////// 
 
 .actor_container_list {
     background-color: rgba(0, 0, 0, 0.3);

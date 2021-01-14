@@ -94,7 +94,7 @@ function ListView(props) {
 
 
             {props.data.map((object, i) => (
-                <Link onClick={() => handleClick()} key={"object_" + i} id="object_link" to={{ pathname: `/${object.type}_description/${object.id}`, state: { object: object } }}>
+                <Link onClick={() => handleClick()} key={"object_" + i} id="object_link" to={{ pathname: `/${object.type}_description/${object.id}`, object: object }}>
 
                     {object.type === 'actor' ? actorListView(object) : movieListView(object)}
 
