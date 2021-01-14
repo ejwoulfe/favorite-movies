@@ -1,82 +1,12 @@
-@import '../../../../util/variables';
+@import '../../../util/variables';
 
-
-#object_link {
+#object_desc_link {
     text-decoration: none;
-    color: white;
+    color: red;
 
 }
 
-
-
-// Movie List View Styling
-.movie_container_list {
-    background-color: rgba(0, 0, 0, 0.3);
-    position: relative;
-    min-height: 30rem;
-    display: flex;
-    align-items: flex-end;
-    margin-bottom: 5rem;
-    border: 1px solid white;
-
-
-    &:hover {
-        cursor: pointer;
-
-        >.movie_information_list {
-            background-position: right;
-
-        }
-    }
-
-
-
-    .movie_information_list {
-        position: relative;
-        width: 100%;
-        transition: .5s ease-out;
-        background: linear-gradient(to left, rgba(124, 124, 124, 0.274) 50%, rgba(0, 0, 0, 0.65) 50%) right;
-        background-size: 200%;
-        background-position: left bottom;
-        text-align: center;
-        min-height: 8rem;
-        border-top: 1px solid white;
-
-
-
-        .movie_name_list {
-            font-family: $title-font,
-                sans-serif;
-            font-size: 2.7rem;
-            font-weight: $title-font-weight;
-
-        }
-
-
-
-
-    }
-
-    .movie_image_list {
-        position: absolute;
-        left: 0;
-        top: 0;
-        width: 100%;
-        height: auto;
-        opacity: 0.5;
-        object-fit: cover;
-        object-position: 0% 25%;
-        max-height: 30rem;
-
-    }
-}
-
-
-
-
-// Actor List View Styling
-
-.actor_container_list {
+.object_container_list {
     background-color: rgba(0, 0, 0, 0.3);
     position: relative;
     min-height: 30rem;
@@ -86,7 +16,7 @@
     flex-wrap: nowrap;
 
 
-    .actor_image_container {
+    .object_image_container {
         flex: 1 1 40%;
         background-position: center;
         background-size: cover;
@@ -100,13 +30,13 @@
 
 
 
-    .actor_information_list {
+    .object_information_list {
         width: 100%;
         display: flex;
         align-items: flex-end;
         flex-wrap: nowrap;
 
-        .actor_known_movies {
+        .object_known_movies {
 
             display: flex;
             flex-direction: row;
@@ -145,7 +75,7 @@
 
 
 
-        .actor_name_container_list {
+        .object_name_container_list {
             width: 100%;
             transition: .5s ease-out;
             background: linear-gradient(to left, rgba(124, 124, 124, 0.274) 50%, rgba(0, 0, 0, 0.65) 50%) right;
@@ -168,7 +98,7 @@
 
 
 
-        .actor_name {
+        .object_name {
             width: 100%;
             font-family: $title-font,
                 sans-serif;
@@ -186,34 +116,4 @@
 
 
 
-}
-
-
-
-
-
-/////// MEDIA QUERIES /////////
-@media only screen and (max-width: 700px) {
-
-    .movie_container_list,
-    .actor_container_list {
-        align-items: flex-start;
-        flex-direction: column;
-
-
-    }
-
-
-}
-
-@media only screen and (min-width: 1921px) {
-
-    #movie_container_list,
-    #actor_container_list {
-        min-width: $min-width;
-        margin: 0 auto;
-        max-width: $max-width-extra-large;
-
-
-    }
 }

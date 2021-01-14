@@ -50,7 +50,6 @@ function Views(props) {
 
 
     function loadViews() {
-        console.log(props)
         if (isGridView) {
             return (
                 <GridView data={props.data} />
