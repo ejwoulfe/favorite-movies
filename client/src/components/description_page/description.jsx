@@ -24,34 +24,35 @@ function Description(props) {
                 console.log(res.data)
                 if (dataType === 'movie') {
                     setDataObject({
-                        id: '',
-                        name: '',
-                        image: '',
-                        description: '',
-                        infoArr: [],
-                        subInfo: [],
-                        type: ''
+                        id: res.data._id,
+                        name: res.data.title,
+                        image: res.data.poster,
+                        description: res.data.description,
+                        infoArr: res.data.actors,
+                        subInfo: [res.data.rating, res.data.director, res.data.year],
+                        type: 'movie'
                     })
                 } else {
                     setDataObject({
-                        id: '',
-                        name: '',
-                        image: '',
-                        description: '',
-                        infoArr: [],
-                        subInfo: [],
-                        type: ''
+                        id: res.data._id,
+                        name: res.data.name,
+                        image: res.data.image,
+                        description: res.data.description,
+                        infoArr: res.data.movies,
+                        subInfo: [res.data.birth_year],
+                        type: 'actor'
                     })
                 }
 
             })
         }
-    }, dataObject);
+    }, [dataObject, props.location.pathname]);
 
 
     return (
         <div id="description_container">
             <h1>Description</h1>
+            {dataObject !== undefined ? <h4>{dataObject.name}</h4> : <h4>YEP</h4>}
         </div>
 
     )
