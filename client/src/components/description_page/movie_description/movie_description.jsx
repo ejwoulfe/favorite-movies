@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import './movie_description.scss';
 import star from '../../../Assets/star.png';
+import { Link } from 'react-router-dom';
 
 
 
@@ -30,7 +31,14 @@ function MovieDescription(props) {
     function createListOfActors(actors) {
 
         return actors.map((actor, index) => {
-            return <li key={"actor_" + index} className="actor_container"><img className="actor_image" alt={actor.name} src={actor.image}></img><h3 className="actor_name">{actor.name}</h3></li>
+            return (
+                <Link to={`/actor_description/${actor._id}`}>
+                    <li key={"actor_" + index} className="actor_container">
+                        <img className="actor_image" alt={actor.name} src={actor.image}></img>
+                        <h3 className="actor_name">{actor.name}</h3>
+                    </li>
+                </Link>
+            )
         })
 
     }

@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import './actor_description.scss';
 
 
@@ -17,10 +18,12 @@ function ActorDescription(props) {
 
         return movies.map((movie, index) => {
             return (
-                <li key={"movie_" + index} className="movie_container">
-                    <img className="movie_poster" alt={movie.name} src={movie.poster}></img>
-                    <h3 className="movie_title">{movie.title}</h3>
-                </li>
+                <Link to={`/movie_description/${movie._id}`}>
+                    <li key={"movie_" + index} className="movie_container">
+                        <img className="movie_poster" alt={movie.name} src={movie.poster}></img>
+                        <h3 className="movie_title">{movie.title}</h3>
+                    </li>
+                </Link>
             )
         })
 
