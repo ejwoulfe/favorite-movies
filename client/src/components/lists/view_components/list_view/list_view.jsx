@@ -7,12 +7,8 @@ import './list_view.scss';
 function ListView(props) {
 
     useEffect(() => {
-        setTimeout(() => {
-            handleScrollPosition();
-        }, 1000);
-
+        handleScrollPosition();
     }, []);
-
 
     function handleScrollPosition() {
         const scrollPosition = sessionStorage.getItem("scrollPosition");
@@ -24,9 +20,10 @@ function ListView(props) {
     };
 
     // store position in sessionStorage
-    function handleClick() {
+    function storeScrollPosition() {
         sessionStorage.setItem("scrollPosition", window.pageYOffset);
     };
+
     function getKnownMovies(actor) {
         return (
             <div className="actor_known_movies">
@@ -47,21 +44,21 @@ function ListView(props) {
     }
 
 
-    function actorListView(currentObject) {
+    function actorListView(actor, getMovies) {
 
         return (
             <div className="actor_container_list" >
 
-                <div className="actor_image_container" style={{ backgroundImage: `url(${currentObject.image})` }} >
+                <div className="actor_image_container" style={{ backgroundImage: `url(${actor.image})` }} >
                 </div>
 
 
                 <div className="actor_information_list">
 
-                    {getKnownMovies(currentObject)}
+                    {getMovies(actor)}
 
                     <div className="actor_name_container_list">
-                        <h2 className="actor_name">{currentObject.name}</h2>
+                        <h2 className="actor_name">{actor.name}</h2>
                     </div>
                     <div className="details_container_list">
                     </div>
@@ -73,15 +70,15 @@ function ListView(props) {
 
     }
 
-    function movieListView(currentObject) {
+    function movieListView(movie) {
 
         return (
             <div className="movie_container_list">
-                <img className="movie_image_list" src={currentObject.image} alt={currentObject.name + " image"}></img>
+                <img className="movie_image_list" src={movie.image} alt={movie.name + " image"}></img>
 
 
                 <div className="movie_information_list">
-                    <h2 className="movie_name_list">{currentObject.name} </h2>
+                    <h2 className="movie_name_list">{movie.name} </h2>
                 </div>
             </div>
         )
@@ -94,9 +91,9 @@ function ListView(props) {
 
 
             {props.data.map((object, i) => (
-                <Link onClick={() => handleClick()} key={"object_" + i} id="object_link" to={{ pathname: `/${object.type}_description/${object.id}`, object: object }}>
+                <Link onClick={() => storeScrollPosition()} key={"object_" + i} id="object_link" to={{ pathname: `/${object.type}_description/${object.id}`, object: object }}>
 
-                    {object.type === 'actor' ? actorListView(object) : movieListView(object)}
+                    {object.type === 'actor' ? actorListView(object, getKnownMovies) : movieListView(object)}
 
                 </Link>
             ))}

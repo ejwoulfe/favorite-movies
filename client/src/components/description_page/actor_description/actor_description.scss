@@ -1,0 +1,84 @@
+@import '../../../util/variables';
+
+#actor_banner_container {
+    display: flex;
+    max-width: $max-width-large;
+    min-width: $min-width;
+    margin: 0 auto;
+    margin-bottom: 2rem;
+
+    #actor_image_container {
+        flex: 50%;
+
+        #actor_banner_image {
+            height: 45rem;
+
+        }
+    }
+
+    #actor_information_container {
+        flex: 45%;
+        text-align: center;
+
+        #actor_name {
+            font-family: $title-font;
+            font-weight: $title-font-weight;
+            font-size: 5rem;
+        }
+
+        #actor_description {
+            font-family: $desc-font;
+            line-height: 1.4;
+        }
+
+    }
+
+
+}
+
+#line_break {
+    width: 60rem;
+    height: 0.2rem;
+    background-color: white;
+}
+
+#actor_known_movies_container {
+    max-width: $max-width-large;
+    margin: 0 auto;
+    min-height: 10rem;
+
+    #movie_header {
+        font-family: $title-font;
+        font-weight: $title-font-weight;
+        font-size: 3.5rem;
+        margin-bottom: 0;
+
+    }
+
+    #movies_list {
+        list-style-type: none;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-evenly;
+
+        .movie_container {
+            padding-top: 2.5rem;
+            padding-bottom: 2.5rem;
+
+
+            .movie_poster {
+                border: 1px solid white;
+                width: 15rem;
+                height: 25rem;
+                object-fit: cover;
+            }
+
+            .movie_title {
+                text-align: center;
+                max-width: 15rem;
+            }
+        }
+
+
+    }
+}

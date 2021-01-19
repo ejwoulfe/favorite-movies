@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from "axios";
+import MovieDescription from './movie_description/movie_description';
+import ActorDescription from './actor_description/actor_desctipion';
 
 function Description(props) {
 
@@ -21,7 +23,6 @@ function Description(props) {
                 method: 'GET',
                 url: fetchUrl
             }).then(res => {
-                console.log(res.data)
                 if (dataType === 'movie') {
                     setDataObject({
                         id: res.data._id,
@@ -49,10 +50,20 @@ function Description(props) {
     }, [dataObject, props.location.pathname]);
 
 
+    function loadComponent(dataObject) {
+
+        if (dataObject.type === 'movie') {
+            return <MovieDescription movie={dataObject} />
+        } else {
+            return <ActorDescription actor={dataObject} />
+        }
+
+    }
+
+
     return (
         <div id="description_container">
-            <h1>Description</h1>
-            {dataObject !== undefined ? <h4>{dataObject.name}</h4> : <h4>YEP</h4>}
+            {dataObject !== undefined ? loadComponent(dataObject) : <h4>Loading</h4>}
         </div>
 
     )

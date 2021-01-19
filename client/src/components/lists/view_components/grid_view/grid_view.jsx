@@ -6,10 +6,7 @@ import './grid_view.scss';
 function GridView(props) {
 
     useEffect(() => {
-        setTimeout(() => {
-            handleScrollPosition();
-        }, 1000);
-
+        handleScrollPosition();
     }, []);
 
 
@@ -23,7 +20,7 @@ function GridView(props) {
     };
 
     // store position in sessionStorage
-    function handleClick() {
+    function storeScrollPosition() {
         sessionStorage.setItem("scrollPosition", window.pageYOffset);
     };
 
@@ -34,7 +31,7 @@ function GridView(props) {
 
 
             {props.data.map((object, i) => (
-                <Link onClick={() => handleClick()} key={"object_" + i} id="object_link" to={{ pathname: `/${object.type}_description/${object.id}`, state: { object: object } }}>
+                <Link onClick={() => storeScrollPosition()} key={"object_" + i} id="object_link" to={{ pathname: `/${object.type}_description/${object.id}`, state: { object: object } }}>
                     <div className="object_container_grid">
 
 

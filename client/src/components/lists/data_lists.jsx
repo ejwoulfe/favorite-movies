@@ -119,33 +119,6 @@ function ListComponent(props) {
             <h1 id="data_list_title">{isMoviesPage ? "Movies" : "Actors"}</h1>
 
 
-
-
-
-            {/* Create Actor/Movie Object and pass it down through props to Description Component
-            Movie: {
-                name: movie.title,
-                image: movie.poster,
-                description: movie.description,
-                array: movie.actors,
-                subInfo: {
-                    1: movie.rating,
-                    2: movie.director,
-                    3: movie.releaseDate,
-                    4: movie.year
-                }
-            } 
-            Actor: {
-                name: actor.name,
-                image: actor.image,
-                description: actor.description,
-                array: actor.movies,
-                subInfo: {
-                    1: actor.birth_year
-                }
-            }*/}
-
-
             {isMoviesPage ? <Views data={createDataObjectsFromMovies(dataList)} /> : <Views data={createDataObjectsFromActors(dataList)} />}
 
 
