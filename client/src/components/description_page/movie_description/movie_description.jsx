@@ -32,7 +32,7 @@ function MovieDescription(props) {
 
         return actors.map((actor, index) => {
             return (
-                <Link to={`/actor_description/${actor._id}`}>
+                <Link className="actor_link" to={`/actor_description/${actor._id}`}>
                     <li key={"actor_" + index} className="actor_container">
                         <img className="actor_image" alt={actor.name} src={actor.image}></img>
                         <h3 className="actor_name">{actor.name}</h3>

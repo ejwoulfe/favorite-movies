@@ -61,6 +61,12 @@
         flex-wrap: wrap;
         justify-content: space-evenly;
 
+        .movie_link {
+            color: white;
+            text-decoration: none;
+
+        }
+
         .movie_container {
             padding-top: 2.5rem;
             padding-bottom: 2.5rem;

@@ -7,16 +7,12 @@ import grid_view_icon from '../../../Assets/UI Icons/grid-view.svg';
 
 
 function Views(props) {
-    const [isGridView, setIsGridView] = useState(JSON.parse(sessionStorage.getItem('gridViewBoolean')) || false);
+    const [objectType, setObjectType] = useState(props.type);
+    const [isGridView, setIsGridView] = useState(JSON.parse(sessionStorage.getItem(props.type + 'GridViewBoolean')) || false);
     const [loading, setLoading] = useState(true);
 
-    useEffect(() => {
-        /*
-        *  Which ever view is selected, disable to corresponding button and reduce its opacity by 50%.
-        *  The other button will maintain its 100% opacity, changes it occordingly based on the current view.
-        */
 
-        sessionStorage.setItem('gridViewBoolean', isGridView);
+    useEffect(() => {
 
 
         if (isGridView) {
@@ -40,16 +36,30 @@ function Views(props) {
 
     }, [isGridView]);
 
+    useEffect(() => {
+        /*
+       *  Which ever view is selected, disable to corresponding button and reduce its opacity by 50%.
+       *  The other button will maintain its 100% opacity, changes it occordingly based on the current view.
+       */
+        sessionStorage.setItem(objectType + 'GridViewBoolean', isGridView);
+
+
+    }, [objectType, isGridView])
+
 
     useEffect(() => {
+
         if (props.data.length > 0) {
             setLoading(false);
+            setObjectType(props.type);
         }
+
 
     }, [props]);
 
 
     function loadViews() {
+
         if (isGridView) {
             return (
                 <GridView data={props.data} />
@@ -64,8 +74,8 @@ function Views(props) {
     return (
         <>
             <div id="display_options">
-                <input onClick={() => { setIsGridView((isGridView) => !isGridView) }} className="view_buttons" id="list_view_button" type="image" src={list_view_icon} alt="List view button" />
-                <input onClick={() => { setIsGridView((isGridView) => !isGridView) }} className="view_buttons" id="grid_view_button" type="image" src={grid_view_icon} alt="Grid view button" />
+                <input onClick={() => setIsGridView(false)} className="view_buttons" id="list_view_button" type="image" src={list_view_icon} alt="List view button" />
+                <input onClick={() => setIsGridView(true)} className="view_buttons" id="grid_view_button" type="image" src={grid_view_icon} alt="Grid view button" />
             </div>
 
             {loading ? <h1>Loading</h1> : loadViews()}

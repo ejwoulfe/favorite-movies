@@ -109,6 +109,17 @@ function ListComponent(props) {
 
     }
 
+    function sendObjectToView() {
+        if (isMoviesPage) {
+            return <Views data={createDataObjectsFromMovies(dataList)} type={'movie'} />
+
+        } else {
+            return <Views data={createDataObjectsFromActors(dataList)} type={'actor'} />
+        }
+
+
+    }
+
 
 
 
@@ -118,11 +129,10 @@ function ListComponent(props) {
         <div id="data_list_content">
             <h1 id="data_list_title">{isMoviesPage ? "Movies" : "Actors"}</h1>
 
-
-            {isMoviesPage ? <Views data={createDataObjectsFromMovies(dataList)} /> : <Views data={createDataObjectsFromActors(dataList)} />}
-
-
-
+            {dataList.length > 0 ?
+                sendObjectToView()
+                :
+                <h4>Loading</h4>}
 
         </div >
 

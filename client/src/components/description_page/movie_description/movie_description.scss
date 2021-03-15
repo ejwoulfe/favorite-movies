@@ -132,6 +132,11 @@
         flex-wrap: wrap;
         justify-content: space-evenly;
 
+        .actor_link {
+            color: white;
+            text-decoration: none;
+        }
+
         .actor_container {
             padding-top: 2.5rem;
             padding-bottom: 2.5rem;

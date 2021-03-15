@@ -1,5 +1,4 @@
-import React, { useState } from 'react';
-import axios from "axios";
+import React from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import NavBar from './components/navigation_bar/navbar';
 import DataList from './components/lists/data_lists';
