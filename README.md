@@ -2,7 +2,7 @@
 
 Favorite Movies allows a user to browse for their favorite movies or actors and gives them a brief description about that person/movie.
 The user will then be able to favorite a movie and have a collection of their favorites displayed on their account page.
- * This Project is a current Work in Progress. *
+ * This Project is a current Work in Progress.
  
  ## Built With
  
