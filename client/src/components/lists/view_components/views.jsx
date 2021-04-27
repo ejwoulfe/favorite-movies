@@ -4,6 +4,7 @@ import GridView from './grid_view/grid_view';
 import ListView from './list_view/list_view';
 import list_view_icon from '../../../Assets/UI Icons/list-view.svg';
 import grid_view_icon from '../../../Assets/UI Icons/grid-view.svg';
+import LoadingSpinner from '../../loading_spinner/loading_spinner';
 
 
 function Views(props) {
@@ -78,7 +79,7 @@ function Views(props) {
                 <input onClick={() => setIsGridView(true)} className="view_buttons" id="grid_view_button" type="image" src={grid_view_icon} alt="Grid view button" />
             </div>
 
-            {loading ? <h1>Loading</h1> : loadViews()}
+            {loading ? <LoadingSpinner /> : loadViews()}
         </>
 
     )

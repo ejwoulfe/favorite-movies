@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { useEffect } from 'react';
 import './data_lists.scss';
 import Views from './view_components/views';
+import LoadingSpinner from '../loading_spinner/loading_spinner';
 
 
 
@@ -132,7 +133,7 @@ function ListComponent(props) {
             {dataList.length > 0 ?
                 sendObjectToView()
                 :
-                <h4>Loading</h4>}
+                <LoadingSpinner />}
 
         </div >
 

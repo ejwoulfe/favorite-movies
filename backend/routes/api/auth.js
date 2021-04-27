@@ -77,14 +77,12 @@ router.route('/api/account/register').post(async (request, response) => {
 
 router.route('/api/account/login').post(async (request, response) => {
     const {
-        firstName,
-        lastName,
         email,
         password
     } = request.body;
 
     // Check if user entered in all the fields, if not return an error.
-    if (!firstName || !lastName || !email || !password) {
+    if (!email || !password) {
         return response.status(400).json({
             message: 'All fields required.'
         });
@@ -113,7 +111,8 @@ router.route('/api/account/login').post(async (request, response) => {
         response.status(200).json({
             user: {
                 id: user._id,
-                name: user.name,
+                firstName: user.firstName,
+                lastName: user.lastName,
                 email: user.email
             }
         });
