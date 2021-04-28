@@ -1,130 +1,117 @@
-const bcrypt = require('bcrypt');
-// import jwt from 'jsonwebtoken';
+const bcrypt = require("bcrypt");
 // import auth from '../../middleware/auth';
-const User = require('../../models/user.model');
-const JWT_SECRET = process.env.jwtSecret;
+const User = require("../../models/user.model");
+const jwt = require("jsonwebtoken");
+const JWT_SECRET = process.env.JWT_SECRET;
 
+const router = require("express").Router();
 
+router.route("/api/account/register").post(async (request, response) => {
+  const { firstName, lastName, email, password } = request.body;
 
-const router = require('express').Router();
+  // Check if all fields are filled correctly.
+  if (!firstName || !lastName || !email || !password) {
+    return response.status(400).json({
+      message: "Please enter all required fields.",
+    });
+  }
 
+  try {
+    const user = await User.findOne({
+      email,
+    });
 
+    if (user) throw Error("User already exists.");
 
-router.route('/api/account/register').post(async (request, response) => {
-    const {
-        firstName,
-        lastName,
-        email,
-        password
-    } = request.body;
+    // Create salt and hash
+    const salt = await bcrypt.genSalt(10);
+    const hash = await bcrypt.hash(password, salt);
 
-    // Check if all fields are filled correctly.
-    if (!firstName || !lastName || !email || !password) {
-        return response.status(400).json({
-            message: 'Please enter all required fields.'
-        })
-    }
+    // Create new user object with hash password/
+    const newUser = new User({
+      firstName,
+      lastName,
+      email,
+      password: hash,
+    });
 
-    try {
-        const user = await User.findOne({
-            email
-        });
+    // Save new user object.
+    const savedUser = await newUser.save();
 
-        if (user) throw Error('User already exists.');
-
-        // Create salt and hash
-        const salt = await bcrypt.genSalt(10);
-        const hash = await bcrypt.hash(password, salt);
-
-        // Create new user object with hash password/
-        const newUser = new User({
-            firstName,
-            lastName,
-            email,
-            password: hash
-        });
-
-        // Save new user object.
-        const savedUser = await newUser.save();
-
-
+    jwt.sign(
+      {
+        id: savedUser.id,
+        email: savedUser.email,
+      },
+      JWT_SECRET,
+      (err, token) => {
+        if (err) throw err;
         response.status(200).json({
-            message: 'Successful Registration',
-            // token,
-            user: {
-                id: savedUser.id,
-                firstName: savedUser.firstName,
-                lastName: savedUser.lastName,
-                email: savedUser.email
-            }
-        })
-
-
-        // const token = jwt.sign({
-        //     id: savedUser._id
-        // }, JWT_SECRET, {
-        //     expiresIn: 3600
-        // });
-
-
-
-    } catch (err) {
-        response.status(400).json({
-            error: err.message
-        })
-    }
+          message: "Successful Registration",
+          token,
+          user: {
+            id: savedUser.id,
+            firstName: savedUser.firstName,
+            lastName: savedUser.lastName,
+            email: savedUser.email,
+          },
+        });
+      }
+    );
+  } catch (err) {
+    response.status(400).json({
+      error: err.message,
+    });
+  }
 });
 
-router.route('/api/account/login').post(async (request, response) => {
-    const {
-        email,
-        password
-    } = request.body;
+router.route("/api/account/login").post(async (request, response) => {
+  const { email, password } = request.body;
 
-    // Check if user entered in all the fields, if not return an error.
-    if (!email || !password) {
-        return response.status(400).json({
-            message: 'All fields required.'
-        });
-    }
-    try {
-        // Check database for an existing user.
-        const user = await User.findOne({
-            email
-        });
-        // If no user found, throw error.
-        if (!user) throw Error('User does not exist');
+  // Check if user entered in all the fields, if not return an error.
+  if (!email || !password) {
+    return response.status(400).json({
+      message: "All fields required.",
+    });
+  }
+  try {
+    // Check database for an existing user.
+    const user = await User.findOne({
+      email,
+    });
 
-        // Check if password matches.
-        const isMatch = await bcrypt.compare(password, user.password);
-        if (!isMatch) throw Error('Invalid credentials');
+    // If no user found, throw error.
+    if (!user) throw Error("User does not exist");
 
-        // const token = jwt.sign({
-        //     id: user._id
-        // }, JWT_SECRET, {
-        //     expiresIn: 3600
-        // });
-        // if (!token) throw Error('Couldnt sign the token');
+    // Check if password matches.
+    const isMatch = await bcrypt.compare(password, user.password);
+    if (!isMatch) throw Error("Invalid credentials");
 
-
-        // On successful login, responed with 200 status and json object.
+    jwt.sign(
+      {
+        id: user.id,
+        email: user.email,
+      },
+      JWT_SECRET,
+      (err, token) => {
+        if (err) throw err;
         response.status(200).json({
-            user: {
-                id: user._id,
-                firstName: user.firstName,
-                lastName: user.lastName,
-                email: user.email
-            }
+          message: "Successful Login",
+          token,
+          user: {
+            id: user.id,
+            firstName: user.firstName,
+            lastName: user.lastName,
+            email: user.email,
+          },
         });
-    } catch (e) {
-        response.status(400).json({
-            msg: e.message
-        });
-    }
-
-
-
-
-})
+      }
+    );
+  } catch (e) {
+    response.status(400).json({
+      msg: e.message,
+    });
+  }
+});
 
 module.exports = router;

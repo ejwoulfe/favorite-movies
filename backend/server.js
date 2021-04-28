@@ -7,7 +7,7 @@ require('dotenv').config();
 
 // Setup on port 5000
 const app = express();
-const port = process.env.PORT || 5000;
+const port = 5000;
 
 app.use(cors());
 app.use(express.json());
@@ -31,7 +31,7 @@ const userRouter = require('./routes/api/users');
 const actorRouter = require('./routes/api/actors');
 const authRouter = require('./routes/api/auth');
 
-// When someone goes to /movies they will be take to our movies router.
+// Routes to send requests through.
 app.use('/movies', movieRouter);
 app.use('/users', userRouter);
 app.use('/actors', actorRouter);
