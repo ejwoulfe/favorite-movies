@@ -18,7 +18,6 @@ router.route('/api/account/:id').get((request, response) => {
         .catch(err => response.status(400).json('Error: ' + err));
 })
 
-
 // UPDATE Routes  \\
 
 router.route('/api/account/update/:id').post((request, response) => {

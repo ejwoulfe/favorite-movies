@@ -1,6 +1,6 @@
-import jwt from "jsonwebtoken";
+const jwt = require("jsonwebtoken");
 
-export default function auth(req, res, next) {
+function auth(req, res, next) {
   const token = req.header("x-auth-token");
 
   // Check for token
@@ -21,3 +21,4 @@ export default function auth(req, res, next) {
     });
   }
 }
+module.exports = auth;

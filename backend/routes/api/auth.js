@@ -3,11 +3,17 @@ const bcrypt = require("bcrypt");
 const User = require("../../models/user.model");
 const jwt = require("jsonwebtoken");
 const JWT_SECRET = process.env.JWT_SECRET;
+const auth = require('../../middleware/auth');
 
 const router = require("express").Router();
 
 router.route("/api/account/register").post(async (request, response) => {
-  const { firstName, lastName, email, password } = request.body;
+  const {
+    firstName,
+    lastName,
+    email,
+    password
+  } = request.body;
 
   // Check if all fields are filled correctly.
   if (!firstName || !lastName || !email || !password) {
@@ -38,8 +44,7 @@ router.route("/api/account/register").post(async (request, response) => {
     // Save new user object.
     const savedUser = await newUser.save();
 
-    jwt.sign(
-      {
+    jwt.sign({
         id: savedUser.id,
         email: savedUser.email,
       },
@@ -66,7 +71,10 @@ router.route("/api/account/register").post(async (request, response) => {
 });
 
 router.route("/api/account/login").post(async (request, response) => {
-  const { email, password } = request.body;
+  const {
+    email,
+    password
+  } = request.body;
 
   // Check if user entered in all the fields, if not return an error.
   if (!email || !password) {
@@ -87,8 +95,7 @@ router.route("/api/account/login").post(async (request, response) => {
     const isMatch = await bcrypt.compare(password, user.password);
     if (!isMatch) throw Error("Invalid credentials");
 
-    jwt.sign(
-      {
+    jwt.sign({
         id: user.id,
         email: user.email,
       },
@@ -114,4 +121,11 @@ router.route("/api/account/login").post(async (request, response) => {
   }
 });
 
+// GET Request to get user data
+router.route("/api/user").get(auth, async (request, response) => {
+  User.findById(request.user.id)
+    .select('-password')
+    .then(user => response.json(user));
+
+});
 module.exports = router;

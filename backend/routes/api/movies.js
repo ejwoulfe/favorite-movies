@@ -20,7 +20,7 @@
 
   //  CREATE Routes  \\
 
-  router.route("/api/new", auth).post((request, response) => {
+  router.route("/api/new").post(auth, (request, response) => {
 
     const title = request.body.title;
     const year = Date.parse(request.body.year);
@@ -47,7 +47,7 @@
 
   //  UPDATE Route  \\
 
-  router.route("/api/update/:id").post((request, response) => {
+  router.route("/api/update/:id").post(auth, (request, response) => {
 
     Movie.findById(request.params.id)
       .then((movie) => {
@@ -69,7 +69,7 @@
 
   //  DELETE Routes  \\
 
-  router.route("/api/:id", auth).delete((request, response) => {
+  router.route("/api/:id").delete(auth, (request, response) => {
 
     Movie.findByIdAndDelete(request.params.id)
       .then(() => response.json("Movie Deleted."))

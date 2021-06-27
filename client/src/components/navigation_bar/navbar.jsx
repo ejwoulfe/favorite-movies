@@ -5,7 +5,10 @@ import SearchBar from './search_bar/search_bar';
 import movie_logo from '../../Assets/UI Icons/video-camera.svg'
 import { Link } from 'react-router-dom';
 
+
 function NavBar() {
+
+
 
     return (
         <nav className="navigation-bar">
@@ -14,7 +17,11 @@ function NavBar() {
                     <Link to="/"> <img id="logo" className="filter-white" alt="logo" src={movie_logo}></img></Link>
                 </div>
                 <SearchBar />
-                <button id="sign_in_button" href="#">Sign In</button>
+
+                <Link id="login_button" to="/login">
+                    <button id="login_button">Log In</button>
+                </Link>
+
                 <ListMenu />
             </div>
         </nav>

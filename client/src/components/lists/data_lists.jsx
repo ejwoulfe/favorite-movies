@@ -42,7 +42,7 @@ function ListComponent(props) {
         if (dataList.length > 0 && isMoviesPage) {
             createDataObjectsFromMovies(dataList);
 
-        } else if (dataList.lenght > 0 && !isMoviesPage) {
+        } else if (dataList.length > 0 && !isMoviesPage) {
             createDataObjectsFromActors(dataList);
         }
     }, [dataList, isMoviesPage]);
