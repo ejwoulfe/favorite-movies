@@ -1,12 +1,14 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import ListMenu from './list_menu/list_menu';
 import './navbar.scss';
 import SearchBar from './search_bar/search_bar';
 import movie_logo from '../../Assets/UI Icons/video-camera.svg'
 import { Link } from 'react-router-dom';
+import { UserContext } from '../../context/UserContext';
 
 
 function NavBar() {
+    const { user, setUser } = useContext(UserContext);
 
 
 
@@ -18,9 +20,13 @@ function NavBar() {
                 </div>
                 <SearchBar />
 
-                <Link id="login_button" to="/login">
-                    <button id="login_button">Log In</button>
-                </Link>
+                {user ? <button onClick={() => {
+                    setUser(null);
+                }}>Logout</button> :
+                    <Link id="login_button" to="/login">
+                        <button id="login_button">Log In</button>
+                    </Link>
+                }
 
                 <ListMenu />
             </div>

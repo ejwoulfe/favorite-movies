@@ -1,8 +1,13 @@
-import e from 'cors';
-import React, { useEffect, useState } from 'react';
+import React, { useContext } from 'react';
+import { UserContext } from '../../context/UserContext';
 import './login_modal.scss';
 
-function LoginModal(props) {
+function LoginModal() {
+
+    const { user, setUser } = useContext(UserContext);
+
+    console.log(user);
+
 
 
     // Retrieve all input field values, ignoring the send button, and put them into an array for validation.
@@ -32,7 +37,6 @@ function LoginModal(props) {
             password: formFieldValues[1]
         };
 
-        console.log(formObject);
 
 
 
@@ -45,7 +49,7 @@ function LoginModal(props) {
         })
             .then((response) => response.json())
             .then((result) => {
-                console.log(result)
+                setUser(result.user);
             })
 
     }
@@ -56,7 +60,7 @@ function LoginModal(props) {
     return (
         <div id="login_modal">
             <h1>Login</h1>
-            <form className="login_form" onSubmit={authFields}>
+            <form id="login_form" onSubmit={authFields}>
                 <label htmlFor="email_input" className="form_label">Email</label>
                 <input id="email_input" className="form_field" type="email" name="email" />
                 <label htmlFor="form_text_area" className="form_label">Password</label>

@@ -1,43 +1,35 @@
-import React from 'react';
+import React, { useState, useMemo } from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import NavBar from './components/navigation_bar/navbar';
 import DataList from './components/lists/data_lists';
 import HomePage from './components/home_page/home';
 import Description from './components/description_page/description';
 import LoginModal from './components/login/login_modal';
-// import Footer from './components/footer/footer';
-
-
-export const LoggedInContext = React.createContext();
+import { UserContext } from './context/UserContext';
 
 
 function App() {
-  // const [loggedIn, setLoggedIn] = useState(false);
+  const [user, setUser] = useState(null);
+
+  const providerValue = useMemo(() => ({ user, setUser }), [user, setUser]);
 
 
 
   return (
     <Router>
-      {/* <LoggedInContext.Provider value={loggedIn}> */}
+      <UserContext.Provider value={providerValue}>
 
-      <NavBar />
-
-
-
-      <Route exact path="/" component={HomePage}></Route>
-      <Route path="/login" component={LoginModal}></Route>
-      <Route path="/movies_list" component={DataList}></Route>
-      <Route path="/actors_list" component={DataList}></Route>
-      <Route path="/movie_description" component={Description}></Route>
-      <Route path="/actor_description" component={Description}></Route>
+        <NavBar />
+        <Route exact path="/" component={HomePage}></Route>
+        <Route path="/login" component={LoginModal}></Route>
+        <Route path="/movies_list" component={DataList}></Route>
+        <Route path="/actors_list" component={DataList}></Route>
+        <Route path="/movie_description" component={Description}></Route>
+        <Route path="/actor_description" component={Description}></Route>
 
 
 
-
-
-
-
-      {/* </LoggedInContext.Provider> */}
+      </UserContext.Provider>
     </Router>
   );
 }
