@@ -1,11 +1,17 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useContext } from 'react';
 import './movie_description.scss';
 import star from '../../../Assets/star.png';
+import { UserContext } from '../../../context/UserContext';
 import { Link } from 'react-router-dom';
 
 
 
+
 function MovieDescription(props) {
+
+    const { user, setUser } = useContext(UserContext);
+
+
 
     // When component mounts we want to take the user to the top of the page, instead of starting at the bottom or middle.
     useEffect(() => {
@@ -58,8 +64,15 @@ function MovieDescription(props) {
                             <h3 id="movie_release_date">Released: {formatDate(new Date(props.movie.subInfo[2]))}</h3>
                         </div>
                         <div id="movie_information_right">
-                            <h3 id="movie_rating">Rating: {(props.movie.subInfo[0])}</h3>
-                            <img id="star_icon" src={star} alt="star"></img>
+
+                            <h3 id="movie_rating"><img id="star_icon" src={star} alt="star"></img>Rating: {(props.movie.subInfo[0])}</h3>
+
+
+
+                            {user ? <button>Add to Favorites</button> :
+                                <h4>Login to add movie to your favorites!</h4>
+                            }
+
                         </div>
                     </div>
                 </div>

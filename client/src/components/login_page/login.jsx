@@ -1,8 +1,8 @@
 import React, { useContext } from 'react';
 import { UserContext } from '../../context/UserContext';
-import './login_modal.scss';
+import './login.scss';
 
-function LoginModal() {
+function LoginPage() {
 
     const { user, setUser } = useContext(UserContext);
 
@@ -80,5 +80,5 @@ function LoginModal() {
     )
 }
 
-export default LoginModal;
+export default LoginPage;
 

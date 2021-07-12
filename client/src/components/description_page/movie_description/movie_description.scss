@@ -69,19 +69,16 @@
 
         #movie_information_right {
             flex: 50%;
-            display: flex;
-            justify-content: flex-end;
             margin-right: 6.5rem;
-            padding-top: 3rem;
+            text-align: right;
 
-            #star_icon {
-                padding-top: 1rem;
-                padding-left: 0.5rem;
-                height: 1.5rem;
+            #movie_rating {
+                padding-bottom: 3.5rem;
             }
 
-
-
+            #star_icon {
+                height: 20px;
+            }
 
         }
     }
