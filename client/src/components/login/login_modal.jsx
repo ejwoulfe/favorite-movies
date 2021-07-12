@@ -6,7 +6,6 @@ function LoginModal() {
 
     const { user, setUser } = useContext(UserContext);
 
-    console.log(user);
 
 
 
@@ -47,10 +46,19 @@ function LoginModal() {
             },
             body: JSON.stringify(formObject)
         })
-            .then((response) => response.json())
+            .then((response) => {
+                if (!response.ok) {
+                    return Promise.reject(response);
+                } else {
+                    return response.json();
+                }
+            })
             .then((result) => {
                 setUser(result.user);
             })
+            .catch((error) => {
+                console.error('Error: ', error);
+            });
 
     }
 
