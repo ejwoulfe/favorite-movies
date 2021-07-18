@@ -28,15 +28,23 @@ nav {
             text-align: center;
         }
 
-        #login_button {
+        #login_button,
+        #signup_button,
+        #logout_button {
             flex: 10%;
             background: none;
             color: inherit;
             border: none;
-            padding: 0;
-            font: inherit;
+            padding: 0 2rem 0 0;
+            font-family: $desc-font;
+            font-size: 1.25rem;
             cursor: pointer;
             outline: inherit;
+        }
+
+        #login_link,
+        #signup_link {
+            color: white;
         }
 
         #list_button {

@@ -7,7 +7,7 @@ const auth = require('../../middleware/auth');
 
 const router = require("express").Router();
 
-router.route("/api/account/register").post(async (request, response) => {
+router.route("/api/account/signup").post(async (request, response) => {
   const {
     firstName,
     lastName,

@@ -5,6 +5,7 @@ import DataList from './components/lists/data_lists';
 import HomePage from './components/home_page/home';
 import Description from './components/description_page/description';
 import LoginPage from './components/login_page/login';
+import SignUpPage from './components/signup_page/signup';
 import { UserContext } from './context/UserContext';
 
 
@@ -22,6 +23,7 @@ function App() {
         <NavBar />
         <Route exact path="/" component={HomePage}></Route>
         <Route path="/login" component={LoginPage}></Route>
+        <Route path="/signup" component={SignUpPage}></Route>
         <Route path="/movies_list" component={DataList}></Route>
         <Route path="/actors_list" component={DataList}></Route>
         <Route path="/movie_description" component={Description}></Route>

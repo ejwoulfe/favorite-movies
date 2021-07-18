@@ -1,0 +1,35 @@
+@import '../../util/variables';
+
+#signup_modal {
+    width: 100%;
+    text-align: center;
+
+    h1 {
+        color: white;
+        text-align: center;
+    }
+
+    #signup_form {
+        background-color: rgba(71, 71, 71, 0.377);
+        margin: auto;
+        width: 20%;
+        display: flex;
+        flex-flow: column nowrap;
+        padding: 3rem 1rem 6rem 1rem;
+
+        label,
+        input {
+            margin: 1rem;
+        }
+
+        #signup_button {
+            margin: auto;
+            margin-top: 1rem;
+            margin-bottom: 1rem;
+            width: 10rem;
+        }
+
+
+
+    }
+}

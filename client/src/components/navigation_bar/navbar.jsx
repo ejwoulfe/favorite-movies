@@ -20,12 +20,19 @@ function NavBar() {
                 </div>
                 <SearchBar />
 
-                {user ? <button onClick={() => {
+                {user ? <button id="logout_button" onClick={() => {
                     setUser(null);
                 }}>Logout</button> :
-                    <Link id="login_button" to="/login">
+                    <Link id="login_link" to="/login">
                         <button id="login_button">Log In</button>
                     </Link>
+
+                }
+                {user ? null :
+                    <Link id="signup_link" to="/signup">
+                        <button id="signup_button">Sign Up</button>
+                    </Link>
+
                 }
 
                 <ListMenu />
