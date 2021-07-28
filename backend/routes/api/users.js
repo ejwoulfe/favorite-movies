@@ -1,5 +1,6 @@
 const router = require('express').Router();
 let User = require('../../models/user.model');
+const auth = require('../../middleware/auth');
 
 //  GET Routes  \\
 
@@ -18,9 +19,11 @@ router.route('/api/account/:id').get((request, response) => {
         .catch(err => response.status(400).json('Error: ' + err));
 })
 
+
+
 // UPDATE Routes  \\
 
-router.route('/api/account/update/:id').post((request, response) => {
+router.route('/api/account/update/:id').post(auth, (request, response) => {
     User.findById(request.params.id)
         .then(user => {
             user.firstName = request.body.firstName;
@@ -34,7 +37,18 @@ router.route('/api/account/update/:id').post((request, response) => {
                 .catch(err => response.status(400).json('Error: ' + err));
         })
         .catch(err => response.status(400).json('Error: ' + err));
-})
+});
+
+router.route("/api/account/:id/addMovie").post(auth, (request, response) => {
+
+    User.findById(request.params.id)
+        .then(user => {
+            user.favorites = user.favorites.push(request.body);
+            user.save()
+                .then(() => response.json('User updated.'))
+                .catch(err => response.status(400).json('Error: ' + err));
+        });
+});
 
 // DELETE Routes  \\
 

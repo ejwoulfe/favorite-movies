@@ -38,7 +38,7 @@ function MovieDescription(props) {
 
         return actors.map((actor, index) => {
             return (
-                <Link className="actor_link" to={`/actor_description/${actor._id}`}>
+                <Link className="actor_link" key={actor.name} to={`/actor_description/${actor._id}`}>
                     <li key={"actor_" + index} className="actor_container">
                         <img className="actor_image" alt={actor.name} src={actor.image}></img>
                         <h3 className="actor_name">{actor.name}</h3>
@@ -47,6 +47,34 @@ function MovieDescription(props) {
             )
         })
 
+    }
+
+    async function addMovieToFavorites(movie) {
+        let movieObject = {
+            id: movie.id
+        };
+
+        await fetch(`http://localhost:5000/users/api/account/${user.id}/addMovie`, {
+            method: "POST",
+            headers: {
+                'Content-type': 'application/json',
+                'x-auth-token': localStorage.getItem('token')
+            },
+            body: JSON.stringify(movieObject)
+        })
+            .then((response) => {
+                if (!response.ok) {
+                    return Promise.reject(response);
+                } else {
+                    return response.json();
+                }
+            })
+            .then((result) => {
+                console.log(result)
+            })
+            .catch((error) => {
+                console.error('Error: ', error);
+            });
     }
 
     return (
@@ -69,7 +97,7 @@ function MovieDescription(props) {
 
 
 
-                            {user ? <button>Add to Favorites</button> :
+                            {user ? <button id="favorite_movie" onClick={() => addMovieToFavorites(props.movie)}>Add to Favorites</button> :
                                 <h4>Login to add movie to your favorites!</h4>
                             }
 

@@ -55,6 +55,7 @@ function LoginPage() {
             })
             .then((result) => {
                 setUser(result.user);
+                localStorage.setItem('token', result.token)
             })
             .catch((error) => {
                 console.error('Error: ', error);
