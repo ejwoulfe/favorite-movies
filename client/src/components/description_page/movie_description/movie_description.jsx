@@ -50,9 +50,7 @@ function MovieDescription(props) {
     }
 
     async function addMovieToFavorites(movie) {
-        let movieObject = {
-            id: movie.id
-        };
+        console.log(movie);
 
         await fetch(`http://localhost:5000/users/api/account/${user.id}/addMovie`, {
             method: "POST",
@@ -60,7 +58,7 @@ function MovieDescription(props) {
                 'Content-type': 'application/json',
                 'x-auth-token': localStorage.getItem('token')
             },
-            body: JSON.stringify(movieObject)
+            body: JSON.stringify(movie)
         })
             .then((response) => {
                 if (!response.ok) {
@@ -81,19 +79,19 @@ function MovieDescription(props) {
 
         <div div id="movie_information_page" >
             <div id="movie_banner_container">
-                <div id="movie_banner" style={{ backgroundImage: `url(${props.movie.image})` }}>
+                <div id="movie_banner" style={{ backgroundImage: `url(${props.movie.poster})` }}>
                     <div id="movie_banner_gradient"></div>
                 </div>
                 <div id="movie_banner_information">
                     <h1 id="movie_title">{props.movie.name}</h1>
                     <div id="movie_information">
                         <div id="movie_information_left">
-                            <h3 id="movie_director">Director: {props.movie.subInfo[1]}</h3>
-                            <h3 id="movie_release_date">Released: {formatDate(new Date(props.movie.subInfo[2]))}</h3>
+                            <h3 id="movie_director">Director: {props.movie.director}</h3>
+                            <h3 id="movie_release_date">Released: {formatDate(new Date(props.movie.year))}</h3>
                         </div>
                         <div id="movie_information_right">
 
-                            <h3 id="movie_rating"><img id="star_icon" src={star} alt="star"></img>Rating: {(props.movie.subInfo[0])}</h3>
+                            <h3 id="movie_rating"><img id="star_icon" src={star} alt="star"></img>Rating: {(props.movie.rating)}</h3>
 
 
 
@@ -110,7 +108,7 @@ function MovieDescription(props) {
             </div>
             <div id="featured_actors">
                 <h1 id="actors_header">Featured Actors</h1>
-                <ul id="actors_list">{createListOfActors(props.movie.infoArr)}</ul>
+                <ul id="actors_list">{createListOfActors(props.movie.actors)}</ul>
             </div>
         </div>
     )

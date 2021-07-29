@@ -5,8 +5,6 @@ import './actor_description.scss';
 
 function ActorDescription(props) {
 
-
-
     // When component mounts we want to take the user to the top of the page, instead of starting at the bottom or middle.
     useEffect(() => {
         window.scrollTo({ top: 0 });
@@ -46,7 +44,7 @@ function ActorDescription(props) {
             <hr id="line_break"></hr>
             <div id="actor_known_movies_container">
                 <h1 id="movie_header">Known For</h1>
-                <ul id="movies_list">{getListOfMovies(props.actor.infoArr)}</ul>
+                <ul id="movies_list">{getListOfMovies(props.actor.movies)}</ul>
             </div>
         </div>
     )

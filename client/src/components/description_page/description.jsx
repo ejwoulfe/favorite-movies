@@ -5,13 +5,12 @@ import ActorDescription from './actor_description/actor_desctipion';
 
 function Description(props) {
 
-    const [dataObject, setDataObject] = useState(props.location.object);
+    const [dataObject, setDataObject] = useState(null);
+    const [dataType, setDataType] = useState(props.location.pathname.substring(1, props.location.pathname.indexOf("_")));
 
     useEffect(() => {
-        if (dataObject === undefined) {
-
-            let underScoreIndex = props.location.pathname.indexOf("_");
-            let dataType = props.location.pathname.substring(1, underScoreIndex);
+        if (dataObject === null) {
+            setDataType(props.location.pathname.substring(1, props.location.pathname.indexOf("_")));
 
             let lastSlashIndex = props.location.pathname.lastIndexOf('/');
             let id = props.location.pathname.substring(lastSlashIndex + 1, props.location.pathname.length);
@@ -24,35 +23,22 @@ function Description(props) {
                 url: fetchUrl
             }).then(res => {
                 if (dataType === 'movie') {
-                    setDataObject({
-                        id: res.data._id,
-                        name: res.data.title,
-                        image: res.data.poster,
-                        description: res.data.description,
-                        infoArr: res.data.actors,
-                        subInfo: [res.data.rating, res.data.director, res.data.year],
-                        type: 'movie'
-                    })
+                    setDataObject(
+                        res.data
+                    )
                 } else {
-                    setDataObject({
-                        id: res.data._id,
-                        name: res.data.name,
-                        image: res.data.image,
-                        description: res.data.description,
-                        infoArr: res.data.movies,
-                        subInfo: [res.data.birth_year],
-                        type: 'actor'
-                    })
+                    setDataObject(
+                        res.data
+                    )
                 }
 
             })
         }
-    }, [dataObject, props.location.pathname]);
+    }, [dataObject, dataType, props.location.pathname]);
 
 
     function loadComponent(dataObject) {
-
-        if (dataObject.type === 'movie') {
+        if (dataType === 'movie') {
             return <MovieDescription movie={dataObject} />
         } else {
             return <ActorDescription actor={dataObject} />
@@ -63,7 +49,7 @@ function Description(props) {
 
     return (
         <div id="description_container">
-            {dataObject !== undefined ? loadComponent(dataObject) : <h4>Loading</h4>}
+            {dataObject !== null ? loadComponent(dataObject) : <h4>Loading</h4>}
         </div>
 
     )
