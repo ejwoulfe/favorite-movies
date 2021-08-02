@@ -43,13 +43,15 @@ router.route('/api/account/update/:id').post(auth, (request, response) => {
 router.route("/api/account/:id/addMovie").post(auth, (request, response) => {
 
     User.findById(request.params.id)
-        .then((result) => {
-            console.log(result);
-            console.log(typeof request.body._id);
-            result.favorites.push(request.body._id);
-            result.save();
+        .then((user) => {
+            if (!user.favorites.includes(request.body._id)) {
+                user.favorites.push(request.body._id);
+                user.save();
+            } else {
+                throw new Error("Movie is already in your favorites.");
+            }
         })
-        .then(() => response.json('User updated.'))
+        .then(() => response.json('Movie added to favorites.'))
         .catch(err => response.status(400).json('Error: ' + err));
 });
 
