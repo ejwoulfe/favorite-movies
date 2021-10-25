@@ -10,7 +10,7 @@ The user will then be able to favorite a movie and have a collection of their fa
  HTML, Sass, ReactJS
  
  Back End:
- Node.js, MongoDB
+ Node.js, Express, MongoDB
  
 
 ![favorite movies figma design](https://user-images.githubusercontent.com/47793125/111672569-7765e780-87f0-11eb-8e61-530a01b1dd02.png)
